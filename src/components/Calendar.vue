@@ -1,7 +1,6 @@
 <template>
-  <div id="calendar">
+  <div class="calendar">
     <el-container>
-      <el-header>Meeting Rooms</el-header>
       <el-main>
         <full-calendar :events="events"
                        :config="config"/>
@@ -20,7 +19,8 @@
        events: [
          {
              title  : 'event1',
-             start  : '2010-01-01',
+             start  : '2018-10-26',
+             allDay : false,
          },
          {
              title  : 'event2',
@@ -46,12 +46,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
   @import '../../style/main.scss';
 
-  #calendar {
-    max-width: 1125px;
-    max-height: 80%;
-    margin: 0 auto;
-  }
 </style>
