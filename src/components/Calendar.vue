@@ -51,7 +51,6 @@
 
   .calendar {
     width: 50%;
-    border: 2px solid grey;
   }
 
 </style>
