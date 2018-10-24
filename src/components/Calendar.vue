@@ -49,4 +49,8 @@
 <style lang="scss" >
   @import '../../style/main.scss';
 
+  .calendar {
+    width: 50%;
+  }
+
 </style>
