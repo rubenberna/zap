@@ -1,25 +1,25 @@
 <template>
   <div class="home">
+    <navbar />
     <div class="home-layout">
       <calendar />
-      <intro />
+      <control-board />
     </div>
-    <rooms-list />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Calendar from '@/components/Calendar'
-import RoomsList from '@/components/RoomsList'
-import Intro from '@/components/Intro'
+import ControlBoard from '@/components/ControlBoard'
+import Navbar from '@/components/Navbar'
 
 export default {
   name: 'home',
   components: {
     Calendar,
-    RoomsList,
-    Intro
+    ControlBoard,
+    Navbar
   }
 }
 </script>
@@ -29,13 +29,17 @@ export default {
 
   .home {
     max-height: 90%;
-    width: 81%;
+    margin-top: 100px;
+    margin: 0 auto;
+    max-width: 1280px;
+    min-width: 960px;
+    width: 80%;
 
     .home-layout {
+      margin-top: 50px;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
-      margin-top: 100px;
     }
   }
 

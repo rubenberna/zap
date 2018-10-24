@@ -50,7 +50,8 @@
   @import '../../style/main.scss';
 
   .calendar {
-    width: 50%;
+    width: 64%;
+    // background: green;
   }
 
 </style>
