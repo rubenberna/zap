@@ -2,7 +2,7 @@
   <div class="rooms-list container">
       <el-dropdown>
         <el-button>
-          Rooms<i class="el-icon-arrow-down el-icon--right"></i>
+          Pick a room<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>Action 1</el-dropdown-item>
@@ -31,7 +31,7 @@
 <style lang="scss" scoped>
   .rooms-list {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: flex-end;
   }
 </style>
