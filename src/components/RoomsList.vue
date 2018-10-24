@@ -16,9 +16,16 @@
 </template>
 
 <script>
-export default {
-  name: "rooms-list"
-}
+  import { mapActions, mapGetters } from 'vuex'
+
+  export default {
+    name: "rooms-list",
+    computed: mapGetters(['meetingRooms']),
+    methods: mapActions(['fetchMeetingRooms']),
+    created() {
+      this.fetchMeetingRooms()
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
