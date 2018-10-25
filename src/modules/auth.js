@@ -1,17 +1,31 @@
-const state = {
+import api from '../api/zapfloor.js'
 
+const state = {
+  token: window.localStorage.getItem('zap_token')
 }
 
-const getter = {
-
+const getters = {
+  isLoggedIn: state => !!state.token
 }
 
 const actions = {
-
+  login: () => {
+    api.login()
+  },
+  finalizeLogin({ commit }, token) {
+    commit('setToken', token)
+    window.localStorage.setItem('zap_token', token)
+  },
+  logout({ commit }) {
+    commit('setToken', null)
+    window.localStorage.removeItem('zap_token')
+  }
 }
 
 const mutations = {
-
+  setToken: (state, token) => {
+    state.token = token
+  }
 }
 
 export default {
