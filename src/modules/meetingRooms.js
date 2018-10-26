@@ -9,10 +9,11 @@ const getters = {
 }
 
 const actions = {
-  async fetchMeetingRooms({ commit }) {
+  async fetchMeetingRooms({ rootState, commit }) {
     commit('setMeetingRooms', null)
-    const response = await api.fetchMeetingRooms()
-    console.log(response);
+    const { token } = rootState.Auth
+    const response = await api.fetchMeetingRooms(token)
+    // console.log(response);
   }
 }
 
