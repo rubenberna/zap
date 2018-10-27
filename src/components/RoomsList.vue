@@ -6,7 +6,8 @@
         </el-button>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item v-for='room in meetingRooms'
-                            :key='room.id'>
+                            :key='room.id'
+                            @click.native='selectRoom(room)'>
             {{ room.name }}
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -19,8 +20,12 @@
 
   export default {
     name: "rooms-list",
-    computed: mapGetters(['meetingRooms']),
-    methods: mapActions(['fetchMeetingRooms']),
+    computed: {
+      ...mapGetters(['meetingRooms']),
+    },
+    methods: {
+      ...mapActions(['fetchMeetingRooms', 'selectRoom']),
+    },
     created() {
       this.fetchMeetingRooms()
     }

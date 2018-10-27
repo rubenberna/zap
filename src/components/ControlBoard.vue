@@ -1,24 +1,25 @@
 <template>
   <div class="control-board">
     <div class="control-board-title">
-      <h3>Don't stand there.</h3>
+      <h3>Don't stand in the kitchen.</h3>
       <h3>Book a room.</h3>
     </div>
     <div class="control-board-actions">
       <rooms-list />
-      
     </div>
   </div>
 </template>
 
 <script>
   import RoomsList from '@/components/RoomsList'
-  
+  import { mapGetters } from 'vuex'
+
   export default {
     name: 'control-board',
     components: {
       RoomsList
-    }
+    },
+    computed: mapGetters(['pickedRoom'])
   }
 </script>
 
@@ -36,7 +37,7 @@
       justify-content: flex-end;
     }
     .control-board-actions {
-      height: 45%;
+      height: 20%;
       width: 100%;
       display: flex;
       justify-content: flex-end;

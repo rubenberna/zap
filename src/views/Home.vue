@@ -9,6 +9,11 @@
       <calendar />
       <control-board />
     </div>
+    <div v-if='pickedRoom'
+         class="home-room-specs">
+      <room-card />
+      <room-image />
+    </div>
   </div>
 </template>
 
@@ -18,7 +23,9 @@ import Calendar from '@/components/Calendar'
 import ControlBoard from '@/components/ControlBoard'
 import Navbar from '@/components/Navbar'
 import NotLoggedIn from '@/components/NotLoggedIn'
-import { mapGetters } from 'vuex';
+import RoomCard from '@/components/RoomCard'
+import RoomImage from '@/components/images/RoomImage'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'home',
@@ -26,9 +33,11 @@ export default {
     Calendar,
     ControlBoard,
     Navbar,
-    NotLoggedIn
+    NotLoggedIn,
+    RoomCard,
+    RoomImage
   },
-  computed: mapGetters(['isLoggedIn'])
+  computed: mapGetters(['isLoggedIn', 'pickedRoom'])
 }
 </script>
 
@@ -48,6 +57,12 @@ export default {
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+    }
+
+    .home-room-specs {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
   }
 
