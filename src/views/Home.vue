@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <navbar />
-    <div class="home-layout">
+    <div v-if='!isLoggedIn'>
+      <not-logged-in />
+    </div>
+    <div v-else
+          class="home-layout">
       <calendar />
       <control-board />
     </div>
@@ -13,14 +17,18 @@
 import Calendar from '@/components/Calendar'
 import ControlBoard from '@/components/ControlBoard'
 import Navbar from '@/components/Navbar'
+import NotLoggedIn from '@/components/NotLoggedIn'
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'home',
   components: {
     Calendar,
     ControlBoard,
-    Navbar
-  }
+    Navbar,
+    NotLoggedIn
+  },
+  computed: mapGetters(['isLoggedIn'])
 }
 </script>
 

@@ -8,7 +8,6 @@ const root = 'https://sandbox-api.zapfloorhq.com'
 
 export default {
   login() {
-    
     const data = {
       grant_type: 'password',
       client_id: clientID,
@@ -35,7 +34,17 @@ export default {
       store.dispatch('finalizeLogin', token)
     })
   },
-  fetchMeetingRooms() {
-    //
-  }
+  // fetchMeetingRooms(token) {
+  //   fetch(`${root}/meeting_rooms`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Accept': 'application/vnd.api+json',
+  //       'Content-Type': 'application/vnd.api+json',
+  //       'Authorization': `Bearer ${ token }`
+  //     }
+  //   })
+  //     .then(response => console.log(response))
+  //     .then(data => console.log(data))
+  //     .catch(err => console.log(err))
+  // }
 }
