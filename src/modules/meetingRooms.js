@@ -1,4 +1,4 @@
-import api from '../api/zapfloor.js'
+import api from '../apis/firebase.js'
 
 const state = {
   meetingRooms: []
@@ -9,11 +9,10 @@ const getters = {
 }
 
 const actions = {
-  async fetchMeetingRooms({ rootState, commit }) {
+  async fetchMeetingRooms({ commit }) {
     commit('setMeetingRooms', null)
-    const { token } = rootState.Auth
-    const response = await api.fetchMeetingRooms(token)
-    // console.log(response);
+    const response = await api.fetchMeetingRooms()
+    commit('setMeetingRooms', response)
   }
 }
 

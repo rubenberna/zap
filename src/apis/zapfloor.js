@@ -34,17 +34,17 @@ export default {
       store.dispatch('finalizeLogin', token)
     })
   },
-  fetchMeetingRooms(token) {
-    fetch(`${root}/meeting_rooms`, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/vnd.api+json',
-        'Content-Type': 'application/vnd.api+json',
-        'Authorization': `Bearer ${ token }`
-      }
-    })
-      .then(response => console.log(response))
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
-  }
+  // fetchMeetingRooms(token) {
+  //   fetch(`${root}/meeting_rooms`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Accept': 'application/vnd.api+json',
+  //       'Content-Type': 'application/vnd.api+json',
+  //       'Authorization': `Bearer ${ token }`
+  //     }
+  //   })
+  //     .then(response => console.log(response))
+  //     .then(data => console.log(data))
+  //     .catch(err => console.log(err))
+  // }
 }

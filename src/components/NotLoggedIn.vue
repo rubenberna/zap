@@ -1,10 +1,14 @@
 <template>
   <div class="not-logged-in" :style="{backgroundImage: ` url('https://res.cloudinary.com/megslist/image/upload/v1540474420/designer-vietnam-1107428-unsplash.jpg')` }">
-    <div class="circular-sb">
-      You're not logged in...
-      <div class="circle1"></div>
-      <div class="circle2"></div>
-    </div>
+    <delay :wait='3500'>
+      <transition name='fade' appear>
+        <div class="circular-sb">
+          You're not logged in...
+          <div class="circle1"></div>
+          <div class="circle2"></div>
+        </div>
+      </transition>
+    </delay>
   </div>
 </template>
 
@@ -77,6 +81,13 @@
       right: -60px;
       bottom: 5px;
     }
+  }
+
+  .fade-enter {
+    opacity: 0;
+  }
+  .fade-enter-active {
+    transition: opacity 2s;
   }
 
 </style>
