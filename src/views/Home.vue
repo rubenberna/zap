@@ -52,7 +52,7 @@ export default {
     margin: 0 auto;
     max-width: 1280px;
     min-width: 960px;
-    width: 80%;
+    width: 90%;
 
     .home-layout {
       margin-top: 20px;
@@ -69,6 +69,5 @@ export default {
       justify-content: space-between;
     }
   }
-
 
 </style>

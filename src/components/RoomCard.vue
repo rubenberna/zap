@@ -28,12 +28,12 @@
     components: {
       RoomImage
     },
-    computed: mapGetters(['pickedRoom']),
+    computed: mapGetters(['pickedRoom', 'meetingRooms']),
     methods: {
       convert(boolean) {
         return boolean ? 'Yes' : 'No'
       }
-    }
+    },
   }
 </script>
 

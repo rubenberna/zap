@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import RoomsList from '@/components/RoomsList'
+  import RoomsList from '@/components/buttons/RoomsList'
   import { mapGetters } from 'vuex'
 
   export default {
@@ -30,13 +30,6 @@
     height: 47vh;
     display: flex;
     flex-direction: column;
-    background-size: cover !important;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    // color: #fff;
-    border-radius: 9%;
-    background-size: 300px 100px;
     .control-board-title {
       height: 50%;
       width: 100%;
