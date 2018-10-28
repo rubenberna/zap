@@ -1,8 +1,12 @@
 <template>
   <div class="calendar">
     <el-container>
-      <el-main>
+      <el-main v-if="!pickedRoom">
         <full-calendar :events="events"
+                       :config="config"/>
+      </el-main>
+      <el-main v-else>
+        <full-calendar :events="reservations"
                        :config="config"/>
       </el-main>
     </el-container>
@@ -21,7 +25,7 @@
           {
              title  : 'event1',
              start  : '2018-10-30',
-             allDay : false,
+             allDay : true,
           },
           {
              title  : 'event2',
@@ -30,23 +34,23 @@
           },
           {
              title  : 'event3',
-             start  : '2010-01-09T12:30:00',
+             start  : '2018-11-05T09:30:00',
              allDay : false,
           },
         ],
        config: {
          weekends: false,
+         selectable: true,
          editable: true,
          selectHelper: true
        }
      }
    },
-    computed: mapGetters(['reservations']),
+    computed: {
+      ...mapGetters(['reservations', 'pickedRoom']),
+    },
     components: {
       FullCalendar
-    },
-    updated() {
-      console.log(this.reservations)
     }
   }
 </script>
@@ -56,8 +60,6 @@
 
   .calendar {
     width: 80%;
-    height: 80%;
-    background: #fff;
   }
 
 </style>
