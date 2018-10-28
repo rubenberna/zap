@@ -42,7 +42,8 @@
          weekends: false,
          selectable: true,
          editable: true,
-         selectHelper: true
+         selectHelper: true,
+         minTime: '07:00:00'
        }
      }
    },
