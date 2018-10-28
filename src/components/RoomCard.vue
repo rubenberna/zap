@@ -3,15 +3,17 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <span style="float: left">{{ pickedRoom.name }}</span>
-        <el-button style="float: right; padding: 3px 0" type="text">Book room</el-button>
       </div>
-      <div class="text item">
+      <div class="room-card-frame text item">
         <ul style="list-style-type:none; float: left" class="room-card-attributes">
           <li><span>Capacity:</span> {{ pickedRoom.capacity }}</li>
-          <li>Layout: {{ pickedRoom.layout }}</li>
-          <li>Video Conference: {{ pickedRoom.videoconference }}</li>
-          <li>With a view: {{ pickedRoom.with_view }}</li>
+          <li><span>Layout:</span> {{ pickedRoom.layout }}</li>
+          <li><span>Video Conference:</span> {{ convert(pickedRoom.videoconference) }}</li>
+          <li><span>With a view:</span> {{ convert(pickedRoom.with_view) }}</li>
         </ul>
+        <div class="room-card-image">
+          <room-image />
+        </div>
       </div>
     </el-card>
   </div>
@@ -19,31 +21,53 @@
 
 <script>
   import { mapGetters } from 'vuex'
+  import RoomImage from '@/components/images/RoomImage'
 
   export default {
     name: 'room-card',
-    computed: mapGetters(['pickedRoom'])
+    components: {
+      RoomImage
+    },
+    computed: mapGetters(['pickedRoom']),
+    methods: {
+      convert(boolean) {
+        return boolean ? 'Yes' : 'No'
+      }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
-  .box-card {
-    width: 400px;
-    margin-left: 18px;
+
+  .room-card {
+    width: 100%;
+    .room-card-frame {
+      display: flex;
+      justify-content: space-between;
+      height: 250px;
+    }
+    .box-card {
+      margin-left: 18px;
+      height: 310px;
+    }
+
+    .item {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+      display: table;
+      content: "";
+    }
+    .clearfix:after {
+      clear: both
+    }
   }
 
- .item {
-   margin-bottom: 18px;
-   text-align: left;
- }
-
- .clearfix:before,
- .clearfix:after {
-   display: table;
-   content: "";
- }
- .clearfix:after {
-   clear: both
- }
+  .el-card_body {
+    height: 260px;
+  }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="not-logged-in" :style="{backgroundImage: ` url('https://res.cloudinary.com/megslist/image/upload/v1540474420/designer-vietnam-1107428-unsplash.jpg')` }">
-    <delay :wait='3500'>
+    <delay :wait='2500'>
       <transition name='fade' appear>
         <div class="circular-sb">
           You're not logged in...
@@ -87,7 +87,7 @@
     opacity: 0;
   }
   .fade-enter-active {
-    transition: opacity 2s;
+    transition: opacity 3s;
   }
 
 </style>

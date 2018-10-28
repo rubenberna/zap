@@ -18,15 +18,15 @@
      position: relative;
      overflow: hidden;
      margin-right: 1px;
-     width: 300px;
-     height: 300px;
-     // background: orange;
-     border-radius: 50%;
+     width: 340px;
+     height: 210px;
+     border-radius: 9%;
      img {
+       border-radius: 9%;
        position: absolute;
        left: 50%;
        top: 50%;
-       width: 100%;
+       width: 80%;
        height: auto;
        -webkit-transform: translate(-50%,-50%);
        -ms-transform: translate(-50%,-50%);

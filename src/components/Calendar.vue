@@ -11,28 +11,29 @@
 
 <script>
   import { FullCalendar } from 'vue-full-calendar'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'calendar',
     data() {
-     return {
-       events: [
-         {
+      return {
+        events: [
+          {
              title  : 'event1',
-             start  : '2018-10-26',
+             start  : '2018-10-30',
              allDay : false,
-         },
-         {
+          },
+          {
              title  : 'event2',
              start  : '2010-01-05',
              end    : '2010-01-07',
-         },
-         {
+          },
+          {
              title  : 'event3',
              start  : '2010-01-09T12:30:00',
              allDay : false,
-         },
-       ],
+          },
+        ],
        config: {
          weekends: false,
          editable: true,
@@ -40,8 +41,12 @@
        }
      }
    },
+    computed: mapGetters(['reservations']),
     components: {
       FullCalendar
+    },
+    updated() {
+      console.log(this.reservations)
     }
   }
 </script>
@@ -50,8 +55,9 @@
   @import '../../style/main.scss';
 
   .calendar {
-    width: 64%;
-    // background: green;
+    width: 80%;
+    height: 80%;
+    background: #fff;
   }
 
 </style>
