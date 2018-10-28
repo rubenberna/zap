@@ -4,10 +4,15 @@
     <div v-if='!isLoggedIn'>
       <not-logged-in />
     </div>
-    <div v-else
-          class="home-layout">
-      <calendar />
-      <control-board />
+    <div v-else>
+      <div class="home-layout">
+        <calendar />
+        <control-board />
+      </div>
+      <div v-if='pickedRoom'
+           class="home-room-specs">
+           <room-card />
+      </div>
     </div>
   </div>
 </template>
@@ -18,7 +23,10 @@ import Calendar from '@/components/Calendar'
 import ControlBoard from '@/components/ControlBoard'
 import Navbar from '@/components/Navbar'
 import NotLoggedIn from '@/components/NotLoggedIn'
-import { mapGetters } from 'vuex';
+import RoomCard from '@/components/RoomCard'
+import RoomImage from '@/components/images/RoomImage'
+import RoomShape from '@/components/images/RoomShape'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'home',
@@ -26,9 +34,12 @@ export default {
     Calendar,
     ControlBoard,
     Navbar,
-    NotLoggedIn
+    NotLoggedIn,
+    RoomCard,
+    RoomImage,
+    RoomShape
   },
-  computed: mapGetters(['isLoggedIn'])
+  computed: mapGetters(['isLoggedIn', 'pickedRoom'])
 }
 </script>
 
@@ -44,10 +55,18 @@ export default {
     width: 80%;
 
     .home-layout {
-      margin-top: 50px;
+      margin-top: 20px;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+    }
+
+    .home-room-specs {
+      margin-top: 10px;
+      width: 62%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 
