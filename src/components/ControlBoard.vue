@@ -1,23 +1,26 @@
 <template>
   <div class="control-board" >
     <div class="control-board-title">
-      <h3>Don't stand in the kitchen.</h3>
+      <h3>Don't stand in the hallway.</h3>
       <h3>Book a room.</h3>
     </div>
     <div class="control-board-actions">
       <rooms-list />
+      <book-room v-show="pickedRoom"/>
     </div>
   </div>
 </template>
 
 <script>
   import RoomsList from '@/components/buttons/RoomsList'
+  import BookRoom from '@/components/buttons/BookRoom'
   import { mapGetters } from 'vuex'
 
   export default {
     name: 'control-board',
     components: {
-      RoomsList
+      RoomsList,
+      BookRoom
     },
     computed: mapGetters(['pickedRoom'])
   }
@@ -25,23 +28,26 @@
 
 <style lang="scss" scoped>
   .control-board {
-    width: 43%;
-    margin-left: 30px;
-    height: 47vh;
+    width: 25%;
+    height: 50vh;
     display: flex;
+    background: #f9f9f9;
+    border-radius: 4px;
     flex-direction: column;
     .control-board-title {
-      height: 50%;
+      height: 60%;
       width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: center;
+      // color: #fff;
     }
     .control-board-actions {
-      height: 20%;
+      height: 45%;
       width: 100%;
       display: flex;
-      justify-content: flex-end;
+      flex-direction: column;
+      justify-content: space-evenly;
     }
   }
 </style>

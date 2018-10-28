@@ -40,7 +40,9 @@
 <style lang="scss" scoped>
 
   .room-card {
-    width: 100%;
+    width: 69%;
+    margin-right: 25px;
+    margin-left: 22px;
     .room-card-frame {
       display: flex;
       justify-content: space-between;
