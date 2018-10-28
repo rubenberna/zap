@@ -45,6 +45,9 @@
       display: flex;
       justify-content: space-between;
       height: 250px;
+      .room-card-attributes {
+        line-height: 40px;
+      }
     }
     .box-card {
       margin-left: 18px;
