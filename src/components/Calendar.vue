@@ -7,7 +7,8 @@
       </el-main>
       <el-main v-else>
         <full-calendar :events="reservations"
-                       :config="config"/>
+                       :config="config"
+                       @event-created='preview'/>
       </el-main>
     </el-container>
   </div>
@@ -23,18 +24,8 @@
       return {
         events: [
           {
-             title  : 'event1',
-             start  : '2018-10-30',
-             allDay : true,
-          },
-          {
-             title  : 'event2',
-             start  : '2010-01-05',
-             end    : '2010-01-07',
-          },
-          {
-             title  : 'event3',
-             start  : '2018-11-05T09:30:00',
+             title  : null,
+             start  : null,
              allDay : false,
           },
         ],
@@ -47,11 +38,16 @@
        }
      }
    },
+   components: {
+     FullCalendar
+   },
     computed: {
       ...mapGetters(['reservations', 'pickedRoom']),
     },
-    components: {
-      FullCalendar
+    methods: {
+      preview() {
+        console.log(event);
+      }
     }
   }
 </script>
@@ -60,7 +56,11 @@
   @import '../../style/main.scss';
 
   .calendar {
-    width: 80%;
+    width: 70%;
+    .el-main {
+      height: 459px;
+      overflow: hidden;
+    }
   }
 
 </style>
