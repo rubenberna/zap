@@ -2,13 +2,12 @@ import api from '../apis/firebase.js'
 
 const state = {
   meetingRooms: [],
-  pickedRoom: null
+  pickedRoom: null,
 }
 
 const getters = {
   meetingRooms: state => state.meetingRooms,
-  pickedRoom: state => state.pickedRoom,
-  reservations: state => state.pickedRoom.reservations
+  pickedRoom: state => state.pickedRoom
 }
 
 const actions = {
@@ -17,10 +16,10 @@ const actions = {
     const response = await api.fetchMeetingRooms()
     commit('setMeetingRooms', response)
   },
-  selectRoom({ commit }, room) {
+  selectRoom({ commit, dispatch }, room) {
     commit('setRoom', null)
     commit('setRoom', room)
-    console.log(room.reservations)
+    dispatch('fetchReservations', {root: true})
   }
 }
 

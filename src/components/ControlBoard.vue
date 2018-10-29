@@ -29,11 +29,12 @@
 <style lang="scss" scoped>
   .control-board {
     width: 25%;
-    height: 47vh;
+    height: 46vh;
     display: flex;
-    background: #f8b500;
+    background: #005792;
     border-radius: 4px;
     flex-direction: column;
+    margin-top: 9px;
     .control-board-title {
       height: 60%;
       width: 100%;
