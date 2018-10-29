@@ -19,7 +19,7 @@
             step: '00:15',
             end: '18:30'
           }"
-          placeholder="And a time">
+          placeholder="Pick a time">
         </el-time-select>
       </div>
       <div class="book-room-end">
@@ -31,7 +31,8 @@
             step: '00:15',
             end: '18:30'
           }"
-          placeholder="Pick a time">
+          placeholder="Pick a time"
+          class="schedule-input">
         </el-time-select>
       </div>
       <div class="book-room-title">
@@ -91,14 +92,14 @@
 <style lang="scss">
   .book-room {
     .book-room-start {
-      width: 81%;
+      width: 90%;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
     }
     .book-room-end {
       margin-top: 14px;
-      width: 49%;
+      width: 53.5%;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -108,11 +109,15 @@
       display: flex;
       align-items: center;
       justify-content: space-evenly;
-      width: 48%;
+      width: 52%;
     }
   }
 
   .el-date-editor.el-input, .el-date-editor.el-input__inner, .el-input__inner, .el-input {
-    width: 140px !important;
+    width: 169px !important;
+  }
+
+  .schedule-input {
+    // width: 140px !important;
   }
 </style>

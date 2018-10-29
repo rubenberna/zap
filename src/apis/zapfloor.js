@@ -33,6 +33,9 @@ export default {
       let token = data.access_token
       store.dispatch('finalizeLogin', token)
     })
+    .catch(err => {
+      console.log('Login error' + err);
+    })
   },
   // fetchMeetingRooms(token) {
   //   fetch(`${root}/meeting_rooms`, {
