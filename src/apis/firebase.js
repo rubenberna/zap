@@ -26,5 +26,13 @@ export default {
     db.meetingRooms.doc(roomId).update({
       reservations: firebase.firestore.FieldValue.arrayUnion(newBooking)
     })
+  },
+  async fetchReservations(roomId) {
+    let reservations = null
+    await db.meetingRooms.doc(roomId).get()
+      .then((doc) => {
+        reservations = doc.data().reservations
+      })
+      return reservations
   }
 }

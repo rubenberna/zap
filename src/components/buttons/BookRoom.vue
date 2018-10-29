@@ -71,7 +71,7 @@
        this.dialogVisible = !this.dialogVisible
      },
      setBooking() {
-       let date = moment(this.booking.date).format('YYYY-MM-DD')
+       let date = moment(this.booking.start.date).format('YYYY-MM-DD')
        const start = date + 'T' + this.booking.start.time
        const end = date + 'T' + this.booking.end
 
