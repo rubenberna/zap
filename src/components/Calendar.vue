@@ -72,7 +72,7 @@
         <el-input placeholder="Title of booking" v-model="booking.title"></el-input>
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="toggleDialog">Cancel</el-button>
+        <el-button @click="closeDialog">Cancel</el-button>
         <el-button type="primary" @click.prevent="changeBooking(booking)">Update</el-button>
       </span>
     </el-dialog>
@@ -129,7 +129,10 @@
     methods: {
       ...mapActions(['createReservation', 'updateReservation']),
       toggleDialog() {
-        this.dialogVisible = !this.dialogVisible
+        this.newVisible = false
+      },
+      closeDialog() {
+        this.updateVisible = false
       },
       select(start) {
         //Firebase cannot read moment.js objects -- needed to manipulate data
@@ -178,6 +181,10 @@
     width: 45%;
     margin-bottom: 14px;
     margin-left: 20px;
+  }
+
+  .el-date-editor.el-input, .el-date-editor.el-input__inner, .el-input__inner, .el-input {
+    width: 180px !important;
   }
 
 </style>
