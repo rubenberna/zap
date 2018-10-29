@@ -7,6 +7,7 @@ import 'fullcalendar/dist/fullcalendar.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Delay from 'vue-delay'
+// dependency to delay render of elements in the template
 
 Vue.config.productionTip = false
 

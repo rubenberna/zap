@@ -1,5 +1,6 @@
 <template>
   <div class="not-logged-in" :style="{backgroundImage: ` url('https://res.cloudinary.com/megslist/image/upload/v1540474420/designer-vietnam-1107428-unsplash.jpg')` }">
+    <!-- delay on speech buble to appear -->
     <delay :wait='2500'>
       <transition name='fade' appear>
         <div class="circular-sb">

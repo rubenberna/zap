@@ -1,19 +1,23 @@
 <template>
   <div class="home">
     <navbar />
+
     <div v-if='!isLoggedIn'>
       <not-logged-in />
     </div>
+
     <div v-else>
       <div class="home-layout">
         <calendar />
         <control-board />
       </div>
+
       <div v-if='pickedRoom'
            class="home-room-specs">
            <room-card />
       </div>
     </div>
+    
   </div>
 </template>
 

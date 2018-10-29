@@ -14,6 +14,8 @@
 </script>
 
 <style lang="scss" scoped>
+
+// Change size and center
   .room-image {
      position: relative;
      overflow: hidden;

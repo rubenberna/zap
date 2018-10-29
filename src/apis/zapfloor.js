@@ -33,21 +33,22 @@ export default {
       let token = data.access_token
       store.dispatch('finalizeLogin', token)
     })
-    .catch(err => {
-      console.log('Login error' + err);
-    })
   },
-  // fetchMeetingRooms(token) {
-  //   fetch(`${root}/meeting_rooms`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Accept': 'application/vnd.api+json',
-  //       'Content-Type': 'application/vnd.api+json',
-  //       'Authorization': `Bearer ${ token }`
-  //     }
-  //   })
-  //     .then(response => console.log(response))
-  //     .then(data => console.log(data))
-  //     .catch(err => console.log(err))
-  // }
 }
+
+/* 404 status error
+
+  fetchMeetingRooms(token) {
+    fetch(`${root}/meeting_rooms`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
+        'Authorization': `Bearer ${ token }`
+      }
+    })
+      .then(response => console.log(response))
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+  }
+*/

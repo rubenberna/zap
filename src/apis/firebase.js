@@ -50,7 +50,6 @@ export default {
   },
   updateReservation(booking) {
     const bookingRef = db.reservations.doc(booking.id)
-
     bookingRef.update({
       start: booking.start,
       end: booking.start,
