@@ -11,8 +11,10 @@ db.settings({
 })
 
 const meetingRooms = db.collection('meeting_rooms')
+const reservations = db.collection('reservations')
 
 export default {
   db,
-  meetingRooms
+  meetingRooms,
+  reservations
 }

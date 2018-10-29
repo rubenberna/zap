@@ -22,17 +22,33 @@ export default {
       })
       return result
   },
-  createBooking(roomId, newBooking) {
-    db.meetingRooms.doc(roomId).update({
-      reservations: firebase.firestore.FieldValue.arrayUnion(newBooking)
+  createReservation(roomId, booking) {
+    db.reservations.add({
+      start: booking.start,
+      end: booking.end,
+      title: booking.title,
+      meetingRoom: roomId,
+      createdOn: booking.createdOn
     })
   },
   async fetchReservations(roomId) {
-    let reservations = null
-    await db.meetingRooms.doc(roomId).get()
-      .then((doc) => {
-        reservations = doc.data().reservations
+    let reservations = []
+    await db.reservations.where('meetingRoom', '==', roomId).get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          reservations.push(doc.data())
+        })
       })
       return reservations
+  },
+  updateReservation(booking) {
+    console.log(booking);
+    // const bookingRef = db.reservations.doc(booking.id)
+    //
+    // bookingRef.update({
+    //   start: booking.start,
+    //   end: booking.start,
+    //   title: booking.title
+    // })
   }
 }

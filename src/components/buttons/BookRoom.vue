@@ -67,7 +67,7 @@
      }
    },
    methods: {
-     ...mapActions(['createBooking']),
+     ...mapActions(['createReservation']),
      toggleDialog() {
        this.dialogVisible = !this.dialogVisible
      },
@@ -79,10 +79,11 @@
        const newBooking = {
          start,
          end,
-         title: this.booking.title
+         title: this.booking.title,
+         createdOn: new Date()
        }
 
-       this.createBooking(newBooking)
+       this.createReservation(newBooking)
        this.dialogVisible = false
      }
    }
@@ -99,7 +100,7 @@
     }
     .book-room-end {
       margin-top: 14px;
-      width: 53.5%;
+      width: 52.5%;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -109,15 +110,12 @@
       display: flex;
       align-items: center;
       justify-content: space-evenly;
-      width: 52%;
+      width: 51.5%;
     }
   }
 
   .el-date-editor.el-input, .el-date-editor.el-input__inner, .el-input__inner, .el-input {
-    width: 169px !important;
+    width: 180px !important;
   }
 
-  .schedule-input {
-    // width: 140px !important;
-  }
 </style>
