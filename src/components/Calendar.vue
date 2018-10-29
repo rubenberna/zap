@@ -95,7 +95,6 @@
 <script>
   import { FullCalendar } from 'vue-full-calendar'
   import { mapGetters, mapActions } from 'vuex'
-  import CalendarDialog from '@/components/dialogs/CalendarDialog'
   import moment from 'moment'
 
   export default {
@@ -130,8 +129,7 @@
      }
    },
    components: {
-     FullCalendar,
-     CalendarDialog
+     FullCalendar
    },
     computed: {
       ...mapGetters(['reservations', 'pickedRoom']),
@@ -192,7 +190,6 @@
 </script>
 
 <style lang="scss" >
-  @import '../../style/main.scss';
 
   .calendar {
     width: 70%;

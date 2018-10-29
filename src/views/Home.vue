@@ -17,7 +17,7 @@
            <room-card />
       </div>
     </div>
-    
+
   </div>
 </template>
 
@@ -46,7 +46,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../style/main';
 
   .home {
     margin-top: 100px;
