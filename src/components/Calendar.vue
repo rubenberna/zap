@@ -112,6 +112,7 @@
        updateVisible: false,
        disabled: false,
        booking: {
+         id: null,
          start: null,
          end: null,
          title: null,
@@ -148,6 +149,7 @@
         this.booking.start = start.start
         this.booking.end = start.end
         this.booking.title = start.title
+        this.booking.id = start.id
         this.disabled = false
         this.updateVisible = true
       },
@@ -156,6 +158,8 @@
         this.newVisible = false
       },
       changeBooking(booking) {
+        this.booking.start = moment(this.booking.start).format()
+        this.booking.end = moment(this.booking.end).format()
         this.updateReservation(booking)
         this.updateVisible = false
       }

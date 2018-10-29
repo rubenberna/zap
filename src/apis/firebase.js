@@ -36,19 +36,27 @@ export default {
     await db.reservations.where('meetingRoom', '==', roomId).get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          reservations.push(doc.data())
+          const data = {
+            'id': doc.id,
+            'start': doc.data().start,
+            'end': doc.data().end,
+            'title': doc.data().title,
+            'meetingRoom': doc.data().meetingRoom,
+            'createdOn': doc.data().createdOn
+          }
+          reservations.push(data)
         })
       })
       return reservations
   },
   updateReservation(booking) {
     console.log(booking);
-    // const bookingRef = db.reservations.doc(booking.id)
-    //
-    // bookingRef.update({
-    //   start: booking.start,
-    //   end: booking.start,
-    //   title: booking.title
-    // })
+    const bookingRef = db.reservations.doc(booking.id)
+
+    bookingRef.update({
+      start: booking.start,
+      end: booking.start,
+      title: booking.title
+    })
   }
 }
