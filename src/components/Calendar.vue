@@ -9,7 +9,8 @@
         <full-calendar :events="reservations"
                        :config="config"
                        @event-created='select'
-                       @event-selected='eventSelected'/>
+                       @event-selected='eventSelected'
+                       @event-drop='rearrange'/>
       </el-main>
     </el-container>
 
@@ -145,7 +146,6 @@
         this.disabled = true
       },
       eventSelected(start) {
-        console.log(start);
         this.booking.start = start.start
         this.booking.end = start.end
         this.booking.title = start.title
@@ -162,6 +162,16 @@
         this.booking.end = moment(this.booking.end).format()
         this.updateReservation(booking)
         this.updateVisible = false
+      },
+      rearrange(start) {
+        console.log(start);
+        let begin = new Date(start.start)
+        let finish = new Date(start.end)
+        this.booking.start = moment(begin).format()
+        this.booking.end = moment(finish).format()
+        this.booking.title = start.title
+        this.booking.id = start.id
+        this.updateReservation(this.booking)
       }
     }
   }
