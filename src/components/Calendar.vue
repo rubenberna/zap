@@ -8,13 +8,15 @@
       <el-main v-else>
         <full-calendar :events="reservations"
                        :config="config"
-                       @event-created='select'/>
+                       @event-created='select'
+                       @event-selected='eventSelected'/>
       </el-main>
     </el-container>
 
+    <!-- NEW BOOKIND DIALOG -->
     <el-dialog
       title="New event"
-      :visible.sync="dialogVisible"
+      :visible.sync="newVisible"
       width="30%"
       class="calendar-modal">
       <div class="calendar-input">
@@ -22,7 +24,7 @@
            <el-date-picker
              v-model="booking.start"
              type="datetime"
-             disabled>
+             :disabled='disabled'>
            </el-date-picker>
       </div>
       <div class="calendar-input">
@@ -30,7 +32,7 @@
            <el-date-picker
              v-model="booking.end"
              type="datetime"
-             disabled>
+             :disabled='disabled'>
            </el-date-picker>
       </div>
       <div class="calendar-input">
@@ -40,6 +42,38 @@
       <span slot="footer" class="dialog-footer">
         <el-button @click="toggleDialog">Cancel</el-button>
         <el-button type="primary" @click.prevent="setBooking(booking)">Confirm</el-button>
+      </span>
+    </el-dialog>
+
+    <!-- UPDATE BOOKING DIALOG -->
+    <el-dialog
+      title="Update event"
+      :visible.sync="updateVisible"
+      width="30%"
+      class="calendar-modal">
+      <div class="calendar-input">
+           <span>Start</span>
+           <el-date-picker
+             v-model="booking.start"
+             type="datetime"
+             :disabled='disabled'>
+           </el-date-picker>
+      </div>
+      <div class="calendar-input">
+           <span class="demonstration">End</span>
+           <el-date-picker
+             v-model="booking.end"
+             type="datetime"
+             :disabled='disabled'>
+           </el-date-picker>
+      </div>
+      <div class="calendar-input">
+        <span>Name</span>
+        <el-input placeholder="Title of booking" v-model="booking.title"></el-input>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="toggleDialog">Cancel</el-button>
+        <el-button type="primary" @click.prevent="changeBooking(booking)">Update</el-button>
       </span>
     </el-dialog>
 
@@ -53,6 +87,7 @@
   import { FullCalendar } from 'vue-full-calendar'
   import { mapGetters, mapActions } from 'vuex'
   import CalendarDialog from '@/components/dialogs/CalendarDialog'
+  import moment from 'moment'
 
   export default {
     name: 'calendar',
@@ -70,14 +105,17 @@
          selectable: true,
          editable: true,
          selectHelper: true,
-         minTime: '07:00:00'
+         minTime: '07:00:00',
+         timezone: 'UTC'
        },
-       dialogVisible: false,
+       newVisible: false,
+       updateVisible: false,
        disabled: false,
        booking: {
          start: null,
          end: null,
-         title: null
+         title: null,
+         createdOn: new Date()
        }
      }
    },
@@ -89,21 +127,33 @@
       ...mapGetters(['reservations', 'pickedRoom']),
     },
     methods: {
-      ...mapActions(['createBooking']),
+      ...mapActions(['createReservation', 'updateReservation']),
       toggleDialog() {
         this.dialogVisible = !this.dialogVisible
       },
-      select(start, end) {
-        this.booking.start = start.start._d
-        this.booking.end = start.end._d
-
-        console.log(start);
-        this.dialogVisible = true
+      select(start) {
+        let begin = new Date(start.start)
+        let finish = new Date(start.end)
+        this.booking.start = moment(begin).format()
+        this.booking.end = moment(finish).format()
+        this.newVisible = true
         this.disabled = true
       },
+      eventSelected(start) {
+        console.log(start);
+        this.booking.start = start.start
+        this.booking.end = start.end
+        this.booking.title = start.title
+        this.disabled = false
+        this.updateVisible = true
+      },
       setBooking(booking) {
-        this.createBooking(booking)
-        this.dialogVisible = false
+        this.createReservation(booking)
+        this.newVisible = false
+      },
+      changeBooking(booking) {
+        this.updateReservation(booking)
+        this.updateVisible = false
       }
     }
   }

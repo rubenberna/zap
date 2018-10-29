@@ -5,24 +5,34 @@
       :visible.sync="dialogVisible"
       width="30%">
       <div class="book-room-start">
-        <div class="block">
-           <span class="demonstration">Start</span>
-           <el-date-picker
-             v-model="booking.start"
-             type="datetime"
-             disabled>
-           </el-date-picker>
-         </div>
+        <span>Start</span>
+        <el-date-picker
+          v-model="booking.start.date"
+          type="date"
+          placeholder="Pick a day">
+        </el-date-picker>
+        <el-time-select
+          v-model="booking.start.time"
+          :picker-options="{
+            start: '07:00',
+            step: '00:15',
+            end: '18:30'
+          }"
+          placeholder="Pick a time">
+        </el-time-select>
       </div>
       <div class="book-room-end">
-        <div class="block">
-           <span class="demonstration">End</span>
-           <el-date-picker
-             v-model="booking.end"
-             type="datetime"
-             disabled>
-           </el-date-picker>
-         </div>
+        <span>End</span>
+        <el-time-select
+          v-model="booking.end"
+          :picker-options="{
+            start: '07:30',
+            step: '00:15',
+            end: '18:30'
+          }"
+          placeholder="Pick a time"
+          class="schedule-input">
+        </el-time-select>
       </div>
       <div class="book-room-title">
         <span>Name</span>
