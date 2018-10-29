@@ -2,6 +2,7 @@ import api from '../apis/zapfloor.js'
 
 const state = {
   token: window.localStorage.getItem('zap_token')
+  // persist token in localStorage
 }
 
 const getters = {
@@ -13,7 +14,6 @@ const actions = {
     api.login()
   },
   finalizeLogin({ commit }, token) {
-    console.log(token)
     commit('setToken', token)
     window.localStorage.setItem('zap_token', token)
   },

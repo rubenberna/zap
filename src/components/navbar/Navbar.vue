@@ -28,7 +28,7 @@
   .navbar {
       display: flex;
       margin-top: 30px;
-      margin-left: 24px;
-      width: 98%;
+      margin-left: 49px;
+      width: 94%;
   }
 </style>
