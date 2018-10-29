@@ -2,15 +2,48 @@
   <div class="calendar">
     <el-container>
       <el-main v-if="!pickedRoom">
-        <full-calendar :events="events"
+        <full-calendar :events="emptyCalendar"
                        :config="config"/>
       </el-main>
       <el-main v-else>
         <full-calendar :events="reservations"
                        :config="config"
-                       @event-created='preview'/>
+                       @event-created='select'/>
       </el-main>
     </el-container>
+    <el-dialog
+      title="New event"
+      :visible.sync="dialogVisible"
+      width="30%">
+      <div class="book-room-start">
+        <div class="block">
+           <span class="demonstration">Start</span>
+           <el-date-picker
+             v-model="booking.start"
+             type="datetime"
+             disabled>
+           </el-date-picker>
+         </div>
+      </div>
+      <div class="book-room-end">
+        <div class="block">
+           <span class="demonstration">End</span>
+           <el-date-picker
+             v-model="booking.end"
+             type="datetime"
+             disabled>
+           </el-date-picker>
+         </div>
+      </div>
+      <div class="book-room-title">
+        <span>Name</span>
+        <el-input placeholder="Title of booking" v-model="booking.title"></el-input>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="toggleDialog">Cancel</el-button>
+        <el-button type="primary" @click.prevent="setBooking(booking)">Confirm</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -22,7 +55,7 @@
     name: 'calendar',
     data() {
       return {
-        events: [
+        emptyCalendar: [
           {
              title  : null,
              start  : null,
@@ -35,6 +68,12 @@
          editable: true,
          selectHelper: true,
          minTime: '07:00:00'
+       },
+       dialogVisible: false,
+       booking: {
+         start: null,
+         end: null,
+         title: null
        }
      }
    },
@@ -45,8 +84,13 @@
       ...mapGetters(['reservations', 'pickedRoom']),
     },
     methods: {
-      preview() {
-        console.log(event);
+      toggleDialog() {
+        this.dialogVisible = !this.dialogVisible
+      },
+      select(start, end) {
+        this.booking.start = start.start._d
+        this.booking.end = start.end._d
+        this.dialogVisible = true
       }
     }
   }

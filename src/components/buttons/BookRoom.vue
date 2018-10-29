@@ -31,7 +31,8 @@
             step: '00:15',
             end: '18:30'
           }"
-          placeholder="Pick a time">
+          placeholder="Pick a time"
+          class="schedule-input">
         </el-time-select>
       </div>
       <div class="book-room-title">
@@ -88,7 +89,7 @@
  }
 </script>
 
-<style lang="scss">
+// <style lang="scss">
   .book-room {
     .book-room-start {
       width: 81%;
@@ -113,6 +114,10 @@
   }
 
   .el-date-editor.el-input, .el-date-editor.el-input__inner, .el-input__inner, .el-input {
+    // width: 140px !important;
+  }
+
+  .schedule-input {
     width: 140px !important;
   }
 </style>
