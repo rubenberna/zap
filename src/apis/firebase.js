@@ -1,5 +1,4 @@
 import db from '../../db/firebaseInit'
-import firebase from 'firebase'
 
 export default {
   async fetchMeetingRooms() {
@@ -50,7 +49,6 @@ export default {
       return reservations
   },
   updateReservation(booking) {
-    console.log(booking);
     const bookingRef = db.reservations.doc(booking.id)
 
     bookingRef.update({

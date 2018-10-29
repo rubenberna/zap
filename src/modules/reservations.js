@@ -12,7 +12,6 @@ const actions = {
   async fetchReservations({ rootState, commit }) {
     const roomId = rootState.MeetingRooms.pickedRoom.id
     const response = await api.fetchReservations(roomId)
-    console.log(response)
     commit('setReservations', response)
   },
   async createReservation({ rootState, dispatch }, newBooking) {

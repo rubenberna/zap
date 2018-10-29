@@ -164,7 +164,6 @@
         this.updateVisible = false
       },
       rearrange(start) {
-        console.log(start);
         let begin = new Date(start.start)
         let finish = new Date(start.end)
         this.booking.start = moment(begin).format()
