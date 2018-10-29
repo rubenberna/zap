@@ -13,6 +13,7 @@ const actions = {
     api.login()
   },
   finalizeLogin({ commit }, token) {
+    console.log(token)
     commit('setToken', token)
     window.localStorage.setItem('zap_token', token)
   },

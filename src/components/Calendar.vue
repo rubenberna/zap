@@ -57,7 +57,10 @@
 
   .calendar {
     width: 70%;
-    // background: blue;
+    .el-main {
+      height: 459px;
+      overflow: hidden;
+    }
   }
 
 </style>

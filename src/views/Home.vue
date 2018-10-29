@@ -51,7 +51,7 @@ export default {
     min-width: 960px;
 
     .home-layout {
-      margin-top: 20px;
+      margin-top: 30px;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
@@ -59,11 +59,8 @@ export default {
     }
 
     .home-room-specs {
-      margin-top: 10px;
+      margin-top: 21px;
       width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
   }
 

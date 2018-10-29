@@ -29,9 +29,9 @@
 <style lang="scss" scoped>
   .control-board {
     width: 25%;
-    height: 50vh;
+    height: 47vh;
     display: flex;
-    background: #f9f9f9;
+    background: #f8b500;
     border-radius: 4px;
     flex-direction: column;
     .control-board-title {
@@ -40,7 +40,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      // color: #fff;
+      color: #fff;
     }
     .control-board-actions {
       height: 45%;
