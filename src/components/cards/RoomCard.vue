@@ -42,7 +42,7 @@
   .room-card {
     width: 69%;
     margin-right: 25px;
-    margin-left: 22px;
+    margin-left: 46px;
     .room-card-frame {
       display: flex;
       justify-content: space-between;

@@ -132,6 +132,7 @@
         this.dialogVisible = !this.dialogVisible
       },
       select(start) {
+        //Firebase cannot read moment.js objects -- needed to manipulate data
         let begin = new Date(start.start)
         let finish = new Date(start.end)
         this.booking.start = moment(begin).format()

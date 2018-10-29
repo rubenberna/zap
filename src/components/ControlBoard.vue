@@ -6,21 +6,18 @@
     </div>
     <div class="control-board-actions">
       <rooms-list />
-      <book-room v-show="pickedRoom"/>
     </div>
   </div>
 </template>
 
 <script>
   import RoomsList from '@/components/buttons/RoomsList'
-  import BookRoom from '@/components/buttons/BookRoom'
   import { mapGetters } from 'vuex'
 
   export default {
     name: 'control-board',
     components: {
-      RoomsList,
-      BookRoom
+      RoomsList
     },
     computed: mapGetters(['pickedRoom'])
   }
@@ -28,10 +25,11 @@
 
 <style lang="scss" scoped>
   .control-board {
-    width: 25%;
+    width: 20%;
     height: 46vh;
     display: flex;
-    background: #005792;
+    background: #ffcd3c;
+    opacity: 0.9;
     border-radius: 4px;
     flex-direction: column;
     margin-top: 9px;
