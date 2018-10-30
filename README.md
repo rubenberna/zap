@@ -1,5 +1,7 @@
 # zap
 
+Project using fullcalendar and Vue.js
+
 ## Project setup
 ```
 yarn install
