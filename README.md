@@ -1,6 +1,6 @@
 # zap
 
-Project using fullcalendar and Vue.js
+Project using fullcalendar, Vue.js and firebase
 
 ## Project setup
 ```
