@@ -52,7 +52,7 @@ export default {
     const bookingRef = db.reservations.doc(booking.id)
     bookingRef.update({
       start: booking.start,
-      end: booking.start,
+      end: booking.end,
       title: booking.title
     })
   }

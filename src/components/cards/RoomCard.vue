@@ -8,8 +8,8 @@
         <ul style="list-style-type:none; float: left" class="room-card-attributes">
           <li><span>Capacity:</span> {{ pickedRoom.capacity }}</li>
           <li><span>Layout:</span> {{ pickedRoom.layout }}</li>
-          <li><span>Video Conference:</span> {{ convert(pickedRoom.videoconference) }}</li>
-          <li><span>With a view:</span> {{ convert(pickedRoom.with_view) }}</li>
+          <li><span>Video Conference:</span> {{ pickedRoom.videoconference ? 'Yes' : 'No' }}</li>
+          <li><span>With a view:</span> {{ pickedRoom.with_view ? 'Yes' : 'No' }}</li>
         </ul>
         <div class="room-card-image">
           <room-image />
@@ -28,12 +28,7 @@
     components: {
       RoomImage
     },
-    computed: mapGetters(['pickedRoom', 'meetingRooms']),
-    methods: {
-      convert(boolean) {
-        return boolean ? 'Yes' : 'No'
-      }
-    },
+    computed: mapGetters(['pickedRoom', 'meetingRooms'])
   }
 </script>
 
