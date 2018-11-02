@@ -13,7 +13,8 @@
                        :config="config"
                        @event-created='select'
                        @event-selected='eventSelected'
-                       @event-drop='rearrange'/>
+                       @event-drop='rearrange'
+                       @event-resize='rearrange'/>
       </el-main>
     </el-container>
 
