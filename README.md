@@ -6,9 +6,7 @@ Usage:
 1. Login using Zapfloor oauth api call;
 2. Next component fetches the meeting rooms;
 3. Selecting a meeting room from the list stores it in state and fetches the reservations with that room id;
-
-In the calendar:
-4. Selecting an empty space enables a new event;
+4. Selecting an empty space in the calendar enables a new event;
 5. Selecting an existing event allows you to edit it;
 6. Dragging the event to another time slot changes the date/time;
 7. Resizing the event in the calendar changes the duration of the event;
