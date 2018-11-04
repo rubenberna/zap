@@ -9,7 +9,7 @@ Usage:
 4. Selecting an empty space in the calendar enables a new event;
 5. Selecting an existing event allows you to edit it;
 6. Dragging the event to another time slot changes the date/time;
-7. Resizing the event in the calendar changes the duration of the event;
+7. Resizing the event changes its duration;
 
 ## Project setup
 ```
