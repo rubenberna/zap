@@ -6,18 +6,21 @@
     </div>
     <div class="control-board-actions">
       <rooms-list />
+      <zap-list />
     </div>
   </div>
 </template>
 
 <script>
   import RoomsList from '@/components/buttons/RoomsList'
+  import ZapList from '@/components/buttons/ZapList'
   import { mapGetters } from 'vuex'
 
   export default {
     name: 'control-board',
     components: {
-      RoomsList
+      RoomsList,
+      ZapList
     },
     computed: mapGetters(['pickedRoom'])
   }

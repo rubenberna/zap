@@ -10,12 +10,12 @@ const getters = {
 
 const actions = {
   async fetchReservations({ rootState, commit }) {
-    const roomId = rootState.MeetingRooms.pickedRoom.id
+    const roomId = rootState.FirebaseRooms.pickedRoom.id
     const response = await api.fetchReservations(roomId)
     commit('setReservations', response)
   },
   async createReservation({ rootState, dispatch }, newBooking) {
-    const roomId = rootState.MeetingRooms.pickedRoom.id
+    const roomId = rootState.FirebaseRooms.pickedRoom.id
     await api.createReservation(roomId, newBooking)
     dispatch('fetchReservations')
   },

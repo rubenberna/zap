@@ -2,7 +2,7 @@
   <div class="rooms-list container">
       <el-dropdown>
         <el-button>
-          Firebase rooms<i class="el-icon-arrow-down el-icon--right"></i>
+          ZapFloor rooms<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item v-for='room in meetingRooms'
