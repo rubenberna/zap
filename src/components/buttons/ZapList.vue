@@ -5,10 +5,10 @@
           ZapFloor rooms<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item v-for='room in meetingRooms'
+          <el-dropdown-item v-for='room in zapfloorRooms'
                             :key='room.id'
                             @click.native='selectRoom(room)'>
-            {{ room.name }}
+            {{ room.attributes.name }}
           </el-dropdown-item>
         </el-dropdown-menu>
     </el-dropdown>
@@ -21,13 +21,13 @@
   export default {
     name: "rooms-list",
     computed: {
-      ...mapGetters(['meetingRooms']),
+      ...mapGetters(['zapfloorRooms']),
     },
     methods: {
-      ...mapActions(['fetchMeetingRooms', 'selectRoom']),
+      ...mapActions(['fetchZapfloorRooms', 'selectRoom']),
     },
     created() {
-      this.fetchMeetingRooms()
+      this.fetchZapfloorRooms()
     }
   }
 </script>

@@ -4,7 +4,7 @@ const clientID = process.env.VUE_APP_CLIENT_ID
 const clientSecret = process.env.VUE_APP_CLIENT_SECRET
 const username = process.env.VUE_APP_USERNAME
 const password = process.env.VUE_APP_PASSWORD
-const root = 'https://sandbox-api.zapfloorhq.com'
+const root = 'https://open.sandbox-api.zapfloorhq.com/'
 
 export default {
   login() {
@@ -34,12 +34,8 @@ export default {
       store.dispatch('finalizeLogin', token)
     })
   },
-}
-
-/* 404 status error
-
-  fetchMeetingRooms(token) {
-    fetch(`${root}/meeting_rooms`, {
+  fetchZapfloorRooms(token) {
+    return fetch(`${root}/v1/meeting_rooms`, {
       method: 'GET',
       headers: {
         'Accept': 'application/vnd.api+json',
@@ -47,8 +43,8 @@ export default {
         'Authorization': `Bearer ${ token }`
       }
     })
-      .then(response => console.log(response))
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
+    .then(response => response.json())
+    .then(function(data) { return data.data} )
+    .catch(err => console.log(err))
   }
-*/
+}
