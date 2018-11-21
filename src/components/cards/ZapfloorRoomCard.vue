@@ -12,7 +12,7 @@
           <li><span>With a view:</span> </li>
         </ul>
         <div class="room-card-image">
-          <room-image />
+          <zap-room-image />
         </div>
       </div>
     </el-card>
@@ -21,12 +21,12 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import RoomImage from '@/components/images/RoomImage'
+  import ZapRoomImage from '@/components/images/ZapRoomImage'
 
   export default {
     name: 'room-card',
     components: {
-      RoomImage
+      ZapRoomImage
     },
     computed: mapGetters(['zapRoom'])
   }
