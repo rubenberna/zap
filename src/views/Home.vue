@@ -2,19 +2,28 @@
   <div class="home">
     <navbar />
 
+    <!-- User is not logged in -->
     <div v-if='!isLoggedIn'>
       <not-logged-in />
     </div>
 
+    <!-- User is logged in -->
     <div v-else>
       <div class="home-layout">
         <calendar />
         <control-board />
       </div>
 
+      <!-- Selected room from firebase list -->
       <div v-if='pickedRoom'
            class="home-room-specs">
-           <room-card />
+           <firebase-room-card />
+      </div>
+
+      <!-- Selected room from zapfloor list -->
+      <div v-if='zapRoom'
+           class="home-room-specs">
+           <zapfloor-room-card />
       </div>
     </div>
 
@@ -27,7 +36,8 @@ import Calendar from '@/components/Calendar'
 import ControlBoard from '@/components/ControlBoard'
 import Navbar from '@/components/navbar/Navbar'
 import NotLoggedIn from '@/components/NotLoggedIn'
-import RoomCard from '@/components/cards/RoomCard'
+import FirebaseRoomCard from '@/components/cards/FirebaseRoomCard'
+import ZapfloorRoomCard from '@/components/cards/ZapfloorRoomCard'
 import RoomImage from '@/components/images/RoomImage'
 import { mapGetters } from 'vuex'
 
@@ -38,10 +48,11 @@ export default {
     ControlBoard,
     Navbar,
     NotLoggedIn,
-    RoomCard,
+    FirebaseRoomCard,
+    ZapfloorRoomCard,
     RoomImage
   },
-  computed: mapGetters(['isLoggedIn', 'pickedRoom'])
+  computed: mapGetters(['isLoggedIn', 'pickedRoom', 'zapRoom'])
 }
 </script>
 

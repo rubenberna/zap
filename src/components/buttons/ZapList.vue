@@ -7,7 +7,7 @@
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item v-for='room in zapfloorRooms'
                             :key='room.id'
-                            @click.native='selectRoom(room)'>
+                            @click.native='selectZapRoom(room)'>
             {{ room.attributes.name }}
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -24,7 +24,7 @@
       ...mapGetters(['zapfloorRooms']),
     },
     methods: {
-      ...mapActions(['fetchZapfloorRooms', 'selectRoom']),
+      ...mapActions(['fetchZapfloorRooms', 'selectZapRoom']),
     },
     created() {
       this.fetchZapfloorRooms()
