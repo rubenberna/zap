@@ -12,7 +12,9 @@ const getters = {
     return state.zapReservations.map(r => {
       return {
         start: r.attributes.date_time_from,
-        end: r.attributes.date_time_to
+        end: r.attributes.date_time_to,
+        id: r.id,
+        title: r.attributes.extra_attributes.booked_for_user_name,
       }
     })
   }
@@ -45,6 +47,11 @@ const actions = {
   async createZapReservation({ rootState, dispatch}, newBooking) {
     const { token } = rootState.auth
     const response = await zapApi.createZapReservation(newBooking, token)
+    dispatch('fetchZapReservations')
+  },
+  async updateZapReservation({ rootState, dispatch }, updatedBooking) {
+    const { token } = rootState.auth
+    const response = await zapApi.updateZapReservation(updatedBooking, token)
     dispatch('fetchZapReservations')
   }
 }

@@ -19,11 +19,6 @@
                         :disabled='disabled'>
         </el-date-picker>
       </div>
-      <div class="calendar-input">
-        <span>Name</span>
-        <el-input placeholder="Title of booking"
-                  v-model="booking.title" />
-      </div>
       <span slot="footer"
             class="dialog-footer">
         <el-button @click="closeDialog">
@@ -66,7 +61,7 @@
       }
     },
     methods: {
-      ...mapActions(['updateReservation']),
+      ...mapActions(['updateZapReservation']),
       closeDialog() {
         // closes new booking dialog
         this.$emit('toggleDialog', false)
@@ -75,7 +70,7 @@
         // Update booking with data from dialog
         this.booking.start = moment(this.booking.start).format()
         this.booking.end = moment(this.booking.end).format()
-        this.updateReservation(booking)
+        this.updateZapReservation(booking)
         this.closeDialog()
       }
     }

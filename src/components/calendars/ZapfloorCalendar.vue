@@ -48,8 +48,7 @@
          id: null,
          start: null,
          end: null,
-         title: null,
-         createdOn: new Date()
+         title: null
        },
        dates: {
          start: null,
@@ -78,10 +77,11 @@
       },
       eventSelected(start) {
         // User clicks on an existing reservation
+        console.log(start)
         this.oldBooking.start = start.start
         this.oldBooking.end = start.end
-        this.oldBooking.title = start.title
         this.oldBooking.id = start.id
+        this.oldBooking.title = start.title
         this.updateVisible = true
       },
       rearrange(start) {
