@@ -8,8 +8,8 @@
         <ul style="list-style-type:none; float: left" class="room-card-attributes">
           <li><span>Capacity:</span> {{ zapRoom.attributes.capacity }}</li>
           <li><span>Layout:</span> {{ zapRoom.attributes.layout }}</li>
-          <li><span>Video Conference:</span></li>
-          <li><span>With a view:</span> </li>
+          <li><span>Description:</span> {{ zapRoom.attributes.long_description }}</li>
+          <li><span>Assets:</span> {{ zapRoom.attributes.tags.join(', ') }}</li>
         </ul>
         <div class="room-card-image">
           <zap-room-image />

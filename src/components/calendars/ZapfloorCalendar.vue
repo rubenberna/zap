@@ -40,7 +40,7 @@
          selectable: true,
          editable: true,
          minTime: '07:00:00',
-         timezone: 'local'
+         timezone: 'UTC'
        },
        newVisible: false,
        updateVisible: false,
@@ -65,7 +65,7 @@
       ...mapGetters(['zapRoom', 'zapReservations']),
     },
     methods: {
-      ...mapActions(['updateReservation']),
+      ...mapActions(['updateZapReservation']),
       select(start) {
         //User clicks on an empty calendar slot
         // Firebase doesn't take custom moment objects -- needed to manipulate data
@@ -92,7 +92,7 @@
         this.oldBooking.end = moment(finish).format()
         this.oldBooking.title = start.title
         this.oldBooking.id = start.id
-        this.updateReservation(this.oldBooking)
+        this.updateZapReservation(this.oldBooking)
       }
     }
   }

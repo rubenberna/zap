@@ -9,22 +9,13 @@
 
     <!-- User is logged in -->
     <div v-else>
-
-      <!-- Calendar from firebase room -->
       <div class="home-layout">
-        <div v-if='pickedRoom'>
-          <firebase-calendar />
-        </div>
-
-        <!-- Calendar from zapfloor room -->
-        <div v-else-if='zapRoom'>
-          <zapfloor-calendar />
-        </div>
-
-        <!-- Default calendar -->
-        <div v-else>
-          <empty-calendar />
-        </div>
+        <!-- Calendar from firebase room -->
+          <firebase-calendar v-if='pickedRoom'/>
+          <!-- Calendar from zapfloor room -->
+          <zapfloor-calendar v-else-if='zapRoom'/>
+          <!-- Default calendar -->
+          <empty-calendar v-else/>
         <control-board />
       </div>
 
