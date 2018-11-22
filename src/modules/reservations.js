@@ -8,7 +8,14 @@ const state = {
 
 const getters = {
   reservations: state => state.reservations,
-  zapReservations: state => state.zapReservations
+  zapReservations: state => {
+    return state.zapReservations.map(r => {
+      return {
+        start: r.attributes.date_time_from,
+        end: r.attributes.date_time_to
+      }
+    })
+  }
 }
 
 const actions = {
@@ -33,6 +40,7 @@ const actions = {
     const roomId = rootState.ZapFloorRooms.zapRoom.id
     const { token } = rootState.Auth
     const response = await zapApi.fetchZapReservations(roomId, token)
+    console.log(response);
     commit('setZapReservations', response)
   }
 }

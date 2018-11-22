@@ -24,7 +24,6 @@
           },
         ],
        config: {
-         weekends: false,
          selectable: true,
          editable: true,
          minTime: '07:00:00',

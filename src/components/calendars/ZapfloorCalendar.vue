@@ -1,23 +1,7 @@
 <template>
   <div class="calendar">
     <el-container>
-      <!-- NO ROOM SELECTED: default calendar -->
-      <!-- <el-main v-if="!pickedRoom || !zapRoom">
-        <full-calendar :events="emptyCalendar"
-                       :config="config"/>
-      </el-main> -->
-
-      <!-- ROOM SELECTED -->
-      <el-main v-if="pickedRoom">
-        <full-calendar :events="reservations"
-                       :config="config"
-                       @event-created='select'
-                       @event-selected='eventSelected'
-                       @event-drop='rearrange'
-                       @event-resize='rearrange'/>
-      </el-main>
-
-      <el-main v-if="zapRoom">
+      <el-main>
         <full-calendar :events="zapReservations"
                        :config="config"
                        @event-created='select'
@@ -53,15 +37,8 @@
     name: 'calendar',
     data() {
       return {
-        emptyCalendar: [
-          {
-             title  : null,
-             start  : null,
-             allDay : false,
-          },
-        ],
        config: {
-         weekends: false,
+         weekends: true,
          selectable: true,
          editable: true,
          minTime: '07:00:00',
@@ -89,7 +66,7 @@
      UpdatedDialog
    },
     computed: {
-      ...mapGetters(['reservations', 'pickedRoom', 'zapRoom', 'zapReservations']),
+      ...mapGetters(['zapRoom', 'zapReservations']),
     },
     methods: {
       ...mapActions(['updateReservation']),

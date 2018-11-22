@@ -1,7 +1,6 @@
 <template>
   <div class="calendar">
     <el-container>
-
       <el-main>
         <full-calendar :events="reservations"
                        :config="config"
@@ -38,15 +37,7 @@
     name: 'calendar',
     data() {
       return {
-        emptyCalendar: [
-          {
-             title  : null,
-             start  : null,
-             allDay : false,
-          },
-        ],
        config: {
-         weekends: false,
          selectable: true,
          editable: true,
          minTime: '07:00:00',
