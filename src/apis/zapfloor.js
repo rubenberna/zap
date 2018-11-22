@@ -1,5 +1,4 @@
 import store from '../store'
-import qs from 'qs'
 
 const clientID = process.env.VUE_APP_CLIENT_ID
 const clientSecret = process.env.VUE_APP_CLIENT_SECRET
@@ -32,7 +31,9 @@ export default {
     .then(response => response.json())
     .then(data => {
       let token = data.access_token
+      let user = data.user
       store.dispatch('finalizeLogin', token)
+      store.dispatch('saveUser', user)
     })
   },
 
@@ -65,10 +66,6 @@ export default {
   },
 
   fetchZapReservations(id, token) {
-    const queryString = {
-      'filters[meeting_room_id]': id
-    }
-
     return fetch(`${root}v1/meeting_room_reservations?filters[meeting_room_id]=${id}`, {
       method: 'GET',
       headers: {
@@ -79,6 +76,28 @@ export default {
     })
     .then(response => response.json())
     .then(function(data) { return data.data } )
+    .catch(err => console.log(err))
+  },
+
+  createZapReservation(newBooking, token) {
+    const data = {
+      "meeting_room_id": newBooking.meetingRoomId,
+      "date_time_from": newBooking.start,
+      "date_time_to": newBooking.end,
+      "booked_for_user_id": newBooking.user,
+      "status": "confirmed"
+    }
+
+    return fetch(`${root}v1/meeting_room_reservations`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${ token }`
+      }
+    })
+    .then(response => response.json())
     .catch(err => console.log(err))
   }
 }

@@ -21,12 +21,12 @@ const getters = {
 const actions = {
   // Firebase reservations
   async fetchReservations({ rootState, commit }) {
-    const roomId = rootState.FirebaseRooms.pickedRoom.id
+    const roomId = rootState.firebaseRooms.pickedRoom.id
     const response = await api.fetchReservations(roomId)
     commit('setReservations', response)
   },
   async createReservation({ rootState, dispatch }, newBooking) {
-    const roomId = rootState.FirebaseRooms.pickedRoom.id
+    const roomId = rootState.firebaseRooms.pickedRoom.id
     await api.createReservation(roomId, newBooking)
     dispatch('fetchReservations')
   },
@@ -37,11 +37,15 @@ const actions = {
 
   //ZapFloor reservations
   async fetchZapReservations({ rootState, commit }) {
-    const roomId = rootState.ZapFloorRooms.zapRoom.id
-    const { token } = rootState.Auth
+    const roomId = rootState.zapFloorRooms.zapRoom.id
+    const { token } = rootState.auth
     const response = await zapApi.fetchZapReservations(roomId, token)
-    console.log(response);
     commit('setZapReservations', response)
+  },
+  async createZapReservation({ rootState, dispatch}, newBooking) {
+    const { token } = rootState.auth
+    const response = await zapApi.createZapReservation(newBooking, token)
+    dispatch('fetchZapReservations')
   }
 }
 

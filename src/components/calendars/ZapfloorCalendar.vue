@@ -14,13 +14,11 @@
     <!-- NEW BOOKIND DIALOG -->
     <new-dialog :dialogVisible='newVisible'
                 :dates='dates'
-                :disabled='disabled'
                 @toggleDialog='newVisible = $event'/>
 
     <!-- UPDATE BOOKING DIALOG -->
     <updated-dialog :dialogVisible='updateVisible'
                     :booking='oldBooking'
-                    :disabled='disabled'
                     @toggleDialog='updateVisible = $event'/>
 
   </div>
@@ -30,8 +28,8 @@
   import { FullCalendar } from 'vue-full-calendar'
   import { mapGetters, mapActions } from 'vuex'
   import moment from 'moment'
-  import NewDialog from '@/components/dialogs/NewDialog'
-  import UpdatedDialog from '@/components/dialogs/UpdatedDialog'
+  import NewDialog from '@/components/dialogs/zapfloor/NewDialog'
+  import UpdatedDialog from '@/components/dialogs/zapfloor/UpdatedDialog'
 
   export default {
     name: 'calendar',
@@ -46,7 +44,6 @@
        },
        newVisible: false,
        updateVisible: false,
-       disabled: false,
        oldBooking: {
          id: null,
          start: null,
@@ -78,7 +75,6 @@
         this.dates.start = moment(begin).format()
         this.dates.end = moment(finish).format()
         this.newVisible = true
-        this.disabled = true
       },
       eventSelected(start) {
         // User clicks on an existing reservation
@@ -86,7 +82,6 @@
         this.oldBooking.end = start.end
         this.oldBooking.title = start.title
         this.oldBooking.id = start.id
-        this.disabled = false
         this.updateVisible = true
       },
       rearrange(start) {

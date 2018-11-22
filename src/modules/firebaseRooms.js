@@ -18,7 +18,7 @@ const actions = {
   },
   selectRoom({ commit, dispatch, rootState }, room) {
     commit('setRoom', null)
-    rootState.ZapFloorRooms.zapRoom = null
+    rootState.zapFloorRooms.zapRoom = null
     commit('setRoom', room)
     dispatch('fetchReservations', {root: true})
   }

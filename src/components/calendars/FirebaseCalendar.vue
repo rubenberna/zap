@@ -30,8 +30,8 @@
   import { FullCalendar } from 'vue-full-calendar'
   import { mapGetters, mapActions } from 'vuex'
   import moment from 'moment'
-  import NewDialog from '@/components/dialogs/NewDialog'
-  import UpdatedDialog from '@/components/dialogs/UpdatedDialog'
+  import NewDialog from '@/components/dialogs/firebase/NewDialog'
+  import UpdatedDialog from '@/components/dialogs/firebase/UpdatedDialog'
 
   export default {
     name: 'calendar',

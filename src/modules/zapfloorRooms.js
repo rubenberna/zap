@@ -15,13 +15,13 @@ const getters = {
 const actions = {
   async fetchZapfloorRooms({ rootState, commit }) {
     commit('setZapfloorRooms', null)
-    const { token } = rootState.Auth
+    const { token } = rootState.auth
     const response = await api.fetchZapfloorRooms(token)
     commit('setZapfloorRooms', response)
   },
   selectZapRoom({ commit, dispatch, rootState }, room) {
     commit('setZapRoom', null)
-    rootState.FirebaseRooms.pickedRoom = null
+    rootState.firebaseRooms.pickedRoom = null
     commit('setZapRoom', room)
     dispatch('fetchImage', room)
     dispatch('fetchZapReservations', {root: true})
@@ -29,9 +29,8 @@ const actions = {
   async fetchImage({ commit, rootState }, room) {
     commit('setZapRoomImage', null)
     const id = room.id
-    const { token } = rootState.Auth
+    const { token } = rootState.auth
     const response = await api.fetchImage(id, token)
-    console.log(response)
     commit('setZapRoomImage', response)
   }
 }
