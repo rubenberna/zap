@@ -31,6 +31,7 @@ const actions = {
     const id = room.id
     const { token } = rootState.auth
     const response = await api.fetchImage(id, token)
+    console.log(response);
     commit('setZapRoomImage', response)
   }
 }

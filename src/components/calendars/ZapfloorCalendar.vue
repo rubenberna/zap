@@ -40,7 +40,7 @@
          selectable: true,
          editable: true,
          minTime: '07:00:00',
-         timezone: 'UTC'
+         timezone: 'local'
        },
        newVisible: false,
        updateVisible: false,
@@ -77,7 +77,6 @@
       },
       eventSelected(start) {
         // User clicks on an existing reservation
-        console.log(start)
         this.oldBooking.start = start.start
         this.oldBooking.end = start.end
         this.oldBooking.id = start.id

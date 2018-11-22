@@ -46,12 +46,12 @@ const actions = {
   },
   async createZapReservation({ rootState, dispatch}, newBooking) {
     const { token } = rootState.auth
-    const response = await zapApi.createZapReservation(newBooking, token)
+    await zapApi.createZapReservation(newBooking, token)
     dispatch('fetchZapReservations')
   },
   async updateZapReservation({ rootState, dispatch }, updatedBooking) {
     const { token } = rootState.auth
-    const response = await zapApi.updateZapReservation(updatedBooking, token)
+    await zapApi.updateZapReservation(updatedBooking, token)
     dispatch('fetchZapReservations')
   }
 }
