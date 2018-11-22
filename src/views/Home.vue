@@ -9,18 +9,32 @@
 
     <!-- User is logged in -->
     <div v-else>
+
+      <!-- Calendar from firebase room -->
       <div class="home-layout">
-        <calendar />
+        <div v-if='pickedRoom'>
+          <firebase-calendar />
+        </div>
+
+        <!-- Calendar from zapfloor room -->
+        <div v-else-if='zapRoom'>
+          <zapfloor-calendar />
+        </div>
+
+        <!-- Default calendar -->
+        <div v-else>
+          <empty-calendar />
+        </div>
         <control-board />
       </div>
 
-      <!-- Selected room from firebase list -->
+      <!-- Details from firebase room -->
       <div v-if='pickedRoom'
            class="home-room-specs">
            <firebase-room-card />
       </div>
 
-      <!-- Selected room from zapfloor list -->
+      <!-- Details from zapfloor room -->
       <div v-if='zapRoom'
            class="home-room-specs">
            <zapfloor-room-card />
@@ -32,7 +46,9 @@
 
 <script>
 // @ is an alias to /src
-import Calendar from '@/components/Calendar'
+import FirebaseCalendar from '@/components/calendars/FirebaseCalendar'
+import ZapfloorCalendar from '@/components/calendars/ZapfloorCalendar'
+import EmptyCalendar from '@/components/calendars/EmptyCalendar'
 import ControlBoard from '@/components/ControlBoard'
 import Navbar from '@/components/navbar/Navbar'
 import NotLoggedIn from '@/components/NotLoggedIn'
@@ -44,7 +60,9 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'home',
   components: {
-    Calendar,
+    FirebaseCalendar,
+    ZapfloorCalendar,
+    EmptyCalendar,
     ControlBoard,
     Navbar,
     NotLoggedIn,

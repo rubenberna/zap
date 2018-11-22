@@ -1,14 +1,8 @@
 <template>
   <div class="calendar">
     <el-container>
-      <!-- NO ROOM SELECTED: default calendar -->
-      <el-main v-if="!pickedRoom">
-        <full-calendar :events="emptyCalendar"
-                       :config="config"/>
-      </el-main>
 
-      <!-- ROOM SELECTED -->
-      <el-main v-else>
+      <el-main>
         <full-calendar :events="reservations"
                        :config="config"
                        @event-created='select'
