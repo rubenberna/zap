@@ -16,8 +16,9 @@ const actions = {
     const response = await api.fetchMeetingRooms()
     commit('setMeetingRooms', response)
   },
-  selectRoom({ commit, dispatch }, room) {
+  selectRoom({ commit, dispatch, rootState }, room) {
     commit('setRoom', null)
+    rootState.zapFloorRooms.zapRoom = null
     commit('setRoom', room)
     dispatch('fetchReservations', {root: true})
   }
