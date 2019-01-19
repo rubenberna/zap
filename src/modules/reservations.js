@@ -34,13 +34,27 @@ const actions = {
     const roomId = rootState.firebaseRooms.pickedRoom.id
     await api.createReservation(roomId, newBooking)
     dispatch('fetchReservations')
-    commit('setCurrReservation', newBooking)
+    const reservation = {
+      start: newBooking.start,
+      end: newBooking.end,
+      title: newBooking.title,
+      createdOn: newBooking.createdOn,
+      room: 'Texas'
+    }
+    commit('setCurrReservation', reservation)
   },
   // Updates selected reservation and fetches list
   async updateReservation({ dispatch, commit }, updatedBooking) {
     await api.updateReservation(updatedBooking)
     dispatch('fetchReservations')
-    commit('setCurrReservation', updatedBooking)
+    const reservation = {
+      start: updatedBooking.start,
+      end: updatedBooking.end,
+      title: updatedBooking.title,
+      createdOn: updatedBooking.createdOn,
+      room: 'Colorado'
+    }
+    commit('setCurrReservation', reservation)
   },
 
   //ZapFloor reservations

@@ -100,7 +100,6 @@
 <style lang="scss" >
 
   .calendar {
-    width: 70%;
     color: #fff;
     font-weight: 800;
     .el-main {

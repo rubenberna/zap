@@ -8,39 +8,38 @@
     </div>
 
     <!-- User is logged in -->
-    <div v-else>
-      <div class="home-layout">
-
-        <div class="home-layout-column1">
-          <control-board />
-          <!-- Details from curent booking -->
-          <div v-if='currReservation'
-                class="reservation">
-                <reservation-details />
-          </div>
+    <div v-else
+         class="home-layout">
+      <div class="home-layout-column1">
+        <control-board />
+        <!-- Details from curent booking -->
+        <div v-if='currReservation'
+              class="reservation">
+              <reservation-details />
         </div>
+      </div>
 
-        <div class="home-layout-column2">
-
-        </div>
+      <div class="home-layout-column2">
         <!-- Calendar from firebase room -->
         <firebase-calendar v-if='pickedRoom'/>
+
         <!-- Calendar from zapfloor room -->
         <zapfloor-calendar v-else-if='zapRoom'/>
+
         <!-- Default calendar -->
         <empty-calendar v-else/>
-      </div>
 
-      <!-- Details from firebase room -->
-      <div v-if='pickedRoom'
-           class="home-room-specs">
-           <firebase-room-card />
-      </div>
+        <!-- Details from firebase room -->
+        <div v-if='pickedRoom'
+             class="home-room-specs">
+             <firebase-room-card />
+        </div>
 
-      <!-- Details from zapfloor room -->
-      <div v-if='zapRoom'
-           class="home-room-specs">
-           <zapfloor-room-card />
+        <!-- Details from zapfloor room -->
+        <div v-if='zapRoom'
+             class="home-room-specs">
+             <zapfloor-room-card />
+        </div>
       </div>
     </div>
 
@@ -82,23 +81,23 @@ export default {
 <style lang="scss" scoped>
 
   .home {
-    margin-top: 100px;
     margin: 0 auto;
-    max-width: 1400px;
-    min-width: 960px;
+    max-width: 1600px;
+    min-width: 940px;
 
     .home-layout {
       margin-top: 30px;
       display: flex;
       justify-content: space-between;
-      max-height: 60%;
       .home-layout-column1 {
         height: 100%;
         display: flex;
         flex-direction: column;
-        background: red;
+        width: 35%;
       }
-      
+      .home-layout-column2 {
+        width: 65%;
+      }
     }
 
     .home-room-specs {

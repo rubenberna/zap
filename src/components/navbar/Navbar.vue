@@ -26,7 +26,9 @@
 <style lang="scss" scoped>
   .navbar {
       display: flex;
-      margin-left: 49px;
-      width: 94%;
+      width: 21%;
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 20px;
   }
 </style>

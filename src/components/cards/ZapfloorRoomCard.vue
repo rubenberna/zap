@@ -31,3 +31,43 @@
     computed: mapGetters(['zapRoom'])
   }
 </script>
+
+<style lang="scss">
+
+  .room-card {
+    width: 100%;
+    margin-right: 20px;
+    // background: red;
+    .room-card-frame {
+      display: flex;
+      justify-content: space-between;
+      height: 250px;
+      .room-card-attributes {
+        line-height: 40px;
+      }
+    }
+    .box-card {
+      margin-left: 18px;
+      height: 310px;
+    }
+
+    .item {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+      display: table;
+      content: "";
+    }
+    .clearfix:after {
+      clear: both
+    }
+  }
+
+  .el-card_body {
+    height: 260px;
+  }
+
+</style>

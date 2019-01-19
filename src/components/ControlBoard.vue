@@ -32,7 +32,6 @@
     opacity: 0.9;
     flex-direction: column;
     justify-content: center;
-    background: yellow;
     .control-board-title {
       width: 100%;
       margin-bottom: 15px;
