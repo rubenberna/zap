@@ -1,6 +1,5 @@
 <template>
   <div class="navbar">
-    <h1 class="navbar-title">ZapfloorHQ</h1>
     <el-button v-if='!isLoggedIn'
                round
                @click.prevent='login'>
@@ -27,7 +26,6 @@
 <style lang="scss" scoped>
   .navbar {
       display: flex;
-      margin-top: 30px;
       margin-left: 49px;
       width: 94%;
   }

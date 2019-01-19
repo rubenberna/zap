@@ -3,7 +3,8 @@ import zapApi from '../apis/zapfloor.js'
 
 const state = {
   reservations: [],
-  zapReservations: []
+  zapReservations: [],
+  currReservation: null
 }
 
 const getters = {
@@ -17,7 +18,8 @@ const getters = {
         title: r.attributes.extra_attributes.booked_for_user_name,
       }
     })
-  }
+  },
+  currReservation: state => state.currReservation
 }
 
 const actions = {
@@ -27,14 +29,18 @@ const actions = {
     const response = await api.fetchReservations(roomId)
     commit('setReservations', response)
   },
-  async createReservation({ rootState, dispatch }, newBooking) {
+  // Creates new reservation and fetches list
+  async createReservation({ rootState, dispatch, commit }, newBooking) {
     const roomId = rootState.firebaseRooms.pickedRoom.id
     await api.createReservation(roomId, newBooking)
     dispatch('fetchReservations')
+    commit('setCurrReservation', newBooking)
   },
-  async updateReservation({ dispatch }, updatedBooking) {
+  // Updates selected reservation and fetches list
+  async updateReservation({ dispatch, commit }, updatedBooking) {
     await api.updateReservation(updatedBooking)
     dispatch('fetchReservations')
+    commit('setCurrReservation', updatedBooking)
   },
 
   //ZapFloor reservations
@@ -44,15 +50,19 @@ const actions = {
     const response = await zapApi.fetchZapReservations(roomId, token)
     commit('setZapReservations', response)
   },
-  async createZapReservation({ rootState, dispatch}, newBooking) {
+  // Creates new reservation and fetches list
+  async createZapReservation({ rootState, dispatch, commit }, newBooking) {
     const { token } = rootState.auth
     await zapApi.createZapReservation(newBooking, token)
     dispatch('fetchZapReservations')
+    commit('setCurrReservation', newBooking)
   },
-  async updateZapReservation({ rootState, dispatch }, updatedBooking) {
+  // Updates selected reservation and fetches list
+  async updateZapReservation({ rootState, dispatch, commit }, updatedBooking) {
     const { token } = rootState.auth
     await zapApi.updateZapReservation(updatedBooking, token)
     dispatch('fetchZapReservations')
+    commit('setCurrReservation', updatedBooking)
   }
 }
 
@@ -62,6 +72,9 @@ const mutations = {
   },
   setZapReservations: (state, list) => {
     state.zapReservations = list
+  },
+  setCurrReservation: (state, booking) => {
+    state.currReservation = booking
   }
 }
 

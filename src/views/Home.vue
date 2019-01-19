@@ -10,13 +10,25 @@
     <!-- User is logged in -->
     <div v-else>
       <div class="home-layout">
+
+        <div class="home-layout-column1">
+          <control-board />
+          <!-- Details from curent booking -->
+          <div v-if='currReservation'
+                class="reservation">
+                <reservation-details />
+          </div>
+        </div>
+
+        <div class="home-layout-column2">
+
+        </div>
         <!-- Calendar from firebase room -->
-          <firebase-calendar v-if='pickedRoom'/>
-          <!-- Calendar from zapfloor room -->
-          <zapfloor-calendar v-else-if='zapRoom'/>
-          <!-- Default calendar -->
-          <empty-calendar v-else/>
-        <control-board />
+        <firebase-calendar v-if='pickedRoom'/>
+        <!-- Calendar from zapfloor room -->
+        <zapfloor-calendar v-else-if='zapRoom'/>
+        <!-- Default calendar -->
+        <empty-calendar v-else/>
       </div>
 
       <!-- Details from firebase room -->
@@ -46,6 +58,7 @@ import NotLoggedIn from '@/components/NotLoggedIn'
 import FirebaseRoomCard from '@/components/cards/FirebaseRoomCard'
 import ZapfloorRoomCard from '@/components/cards/ZapfloorRoomCard'
 import RoomImage from '@/components/images/RoomImage'
+import ReservationDetails from '@/components/ReservationDetails'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -59,9 +72,10 @@ export default {
     NotLoggedIn,
     FirebaseRoomCard,
     ZapfloorRoomCard,
-    RoomImage
+    RoomImage,
+    ReservationDetails
   },
-  computed: mapGetters(['isLoggedIn', 'pickedRoom', 'zapRoom'])
+  computed: mapGetters(['isLoggedIn', 'pickedRoom', 'zapRoom', 'currReservation'])
 }
 </script>
 
@@ -76,14 +90,22 @@ export default {
     .home-layout {
       margin-top: 30px;
       display: flex;
-      justify-content: space-evenly;
-      align-items: center;
+      justify-content: space-between;
       max-height: 60%;
+      .home-layout-column1 {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: red;
+      }
+      
     }
 
     .home-room-specs {
       margin-top: 21px;
       width: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 

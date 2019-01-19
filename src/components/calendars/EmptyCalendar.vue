@@ -20,14 +20,15 @@
           {
              title  : null,
              start  : null,
-             allDay : false,
+             allDay : false
           },
         ],
        config: {
          selectable: true,
          editable: true,
          minTime: '07:00:00',
-         timezone: 'local'
+         timezone: 'local',
+         weekends: false
        }
      }
    },
@@ -36,15 +37,3 @@
    }
   }
 </script>
-
-<style lang="scss" >
-
-  .calendar {
-    width: 70%;
-    .el-main {
-      height: 459px;
-      overflow: hidden;
-    }
-  }
-
-</style>

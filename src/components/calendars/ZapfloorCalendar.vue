@@ -36,7 +36,7 @@
     data() {
       return {
        config: {
-         weekends: true,
+         weekends: false,
          selectable: true,
          editable: true,
          minTime: '07:00:00',
@@ -101,6 +101,8 @@
 
   .calendar {
     width: 70%;
+    color: #fff;
+    font-weight: 800;
     .el-main {
       height: 459px;
       overflow: hidden;

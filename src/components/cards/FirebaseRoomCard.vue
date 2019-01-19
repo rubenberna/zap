@@ -32,12 +32,13 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
   .room-card {
-    width: 69%;
+    width: 68%;
     margin-right: 25px;
     margin-left: 46px;
+    // background: red;
     .room-card-frame {
       display: flex;
       justify-content: space-between;
