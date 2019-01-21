@@ -6,7 +6,7 @@
       </div>
       <div class="room-card-frame text item">
         <ul style="list-style-type:none; float: left" class="room-card-attributes">
-          <li><span>Capacity:</span> {{ zapRoom.attributes.capacity }}</li>
+          <li><span>Capacity:</span> {{ zapRoom.attributes.capacity }} people</li>
           <li><span>Layout:</span> {{ shape(zapRoom.attributes.layout) }}</li>
           <li><span>Description:</span> {{ zapRoom.attributes.long_description }}</li>
           <li><span>Assets:</span> {{ zapRoom.attributes.tags.join(', ') }}</li>

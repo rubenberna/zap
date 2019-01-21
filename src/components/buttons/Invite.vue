@@ -1,6 +1,8 @@
 <template>
   <div class="invite-users">
-    <el-select v-model='valueList' multiple placeholder="Select">
+    <el-select v-model='valueList'
+               multiple
+               placeholder="Select">
       <el-option
         v-for="user in users"
         :key="user.id"
@@ -19,6 +21,7 @@
     name: "invite",
     data() {
       return {
+        visible: false,
         valueList: []
       }
     },
@@ -38,9 +41,10 @@
 </script>
 
 <style lang="scss" scoped>
-  .rooms-list {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+  .invite-users {
+  
+    .invite-button {
+      margin-top: 15px;
+    }
   }
 </style>
