@@ -88,15 +88,15 @@ export default {
     .home-layout {
       margin-top: 30px;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
       .home-layout-column1 {
         height: 100%;
         display: flex;
         flex-direction: column;
-        width: 35%;
+        width: 20%;
       }
       .home-layout-column2 {
-        width: 65%;
+        width: 60%;
       }
     }
 

@@ -20,8 +20,9 @@
       <div class="title">
         <i class="fas fa-map-marker"></i> {{currReservation.room}}
       </div>
-      <div class="invitation">
-        invite people
+      <div>
+        <p class="invitation">invite people</p>
+        <invite />
       </div>
     </div>
   </div>
@@ -30,9 +31,13 @@
 <script>
   import { mapGetters } from 'vuex'
   import moment from 'moment'
+  import Invite from '@/components/buttons/Invite'
 
   export default {
     name: 'reservation-details',
+    components: {
+      Invite
+    },
     computed: {
       ...mapGetters(['currReservation']),
       date() {
@@ -53,7 +58,8 @@
     justify-content: space-evenly;
     color: white;
     text-align: initial;
-    padding-left: 134px;
+    padding-left: 75px;
+    margin-top: 40px;
     .title {
       font-size: 18px;
       font-weight: 700;
@@ -64,10 +70,10 @@
     .invitation {
       font-weight: 700;
       color: #23a393;
-      cursor: not-allowed;
-      &:hover {
-        opacity: 0.7;
-      }
-    }
+      cursor: pointer;
+        &:hover {
+         opacity: 0.7;
+       }
+     }
   }
 </style>

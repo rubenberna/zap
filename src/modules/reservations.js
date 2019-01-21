@@ -69,6 +69,8 @@ const actions = {
     const { token } = rootState.auth
     await zapApi.createZapReservation(newBooking, token)
     dispatch('fetchZapReservations')
+    newBooking.room = rootState.zapFloorRooms.zapRoom.attributes.name
+    newBooking.title = rootState.auth.user.firstname + ' ' + rootState.auth.user.lastname
     commit('setCurrReservation', newBooking)
   },
   // Updates selected reservation and fetches list
@@ -76,6 +78,7 @@ const actions = {
     const { token } = rootState.auth
     await zapApi.updateZapReservation(updatedBooking, token)
     dispatch('fetchZapReservations')
+    updatedBooking.room = rootState.zapFloorRooms.zapRoom.attributes.name
     commit('setCurrReservation', updatedBooking)
   }
 }

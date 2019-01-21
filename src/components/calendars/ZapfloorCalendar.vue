@@ -68,7 +68,6 @@
       ...mapActions(['updateZapReservation']),
       select(start) {
         //User clicks on an empty calendar slot
-        // Firebase doesn't take custom moment objects -- needed to manipulate data
         let begin = new Date(start.start)
         let finish = new Date(start.end)
         this.dates.start = moment(begin).format()
@@ -102,6 +101,7 @@
   .calendar {
     color: #fff;
     font-weight: 800;
+    max-width: 100%;
     .el-main {
       height: 459px;
       overflow: hidden;

@@ -11,12 +11,15 @@ const getters = {
 }
 
 const actions = {
-  login: () => {
-    api.login()
+  login({ dispatch }) {
+    dispatch('changeStatus', {root: true})
+    // delay spinner effect
+    setTimeout(function() { api.login()}, 2000)
   },
-  finalizeLogin({ commit }, token) {
+  finalizeLogin({ commit, dispatch }, token) {
     commit('setToken', token)
     window.localStorage.setItem('zap_token', token)
+    dispatch('changeStatus', {root: true})
   },
   logout({ commit }) {
     commit('setToken', null)

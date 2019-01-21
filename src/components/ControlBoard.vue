@@ -4,7 +4,8 @@
       <h3>Book a room.</h3>
     </div>
     <div class="control-board-actions">
-      <rooms-list />
+      <!-- <rooms-list /> -->
+      <zap-list />
     </div>
   </div>
 </template>
