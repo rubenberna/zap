@@ -7,7 +7,7 @@
       <div class="room-card-frame text item">
         <ul style="list-style-type:none; float: left" class="room-card-attributes">
           <li><span>Capacity:</span> {{ zapRoom.attributes.capacity }}</li>
-          <li><span>Layout:</span> {{ zapRoom.attributes.layout }}</li>
+          <li><span>Layout:</span> {{ shape(zapRoom.attributes.layout) }}</li>
           <li><span>Description:</span> {{ zapRoom.attributes.long_description }}</li>
           <li><span>Assets:</span> {{ zapRoom.attributes.tags.join(', ') }}</li>
         </ul>
@@ -28,16 +28,30 @@
     components: {
       ZapRoomImage
     },
-    computed: mapGetters(['zapRoom'])
+    computed: {
+      ...mapGetters(['zapRoom']),
+    },
+    methods: {
+      shape(layout) {
+        switch (layout) {
+          case 'u_shape':
+            return 'U shape';
+          case 'board_room':
+            return 'Board room';
+          case 'round_table':
+            return 'Round table';
+        }
+      }
+    }
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
   .room-card {
-    width: 69%;
-    margin-right: 25px;
-    margin-left: 46px;
+    width: 100%;
+    margin-right: 20px;
+    // background: red;
     .room-card-frame {
       display: flex;
       justify-content: space-between;

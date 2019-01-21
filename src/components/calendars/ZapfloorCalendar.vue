@@ -36,7 +36,7 @@
     data() {
       return {
        config: {
-         weekends: true,
+         weekends: false,
          selectable: true,
          editable: true,
          minTime: '07:00:00',
@@ -68,7 +68,6 @@
       ...mapActions(['updateZapReservation']),
       select(start) {
         //User clicks on an empty calendar slot
-        // Firebase doesn't take custom moment objects -- needed to manipulate data
         let begin = new Date(start.start)
         let finish = new Date(start.end)
         this.dates.start = moment(begin).format()
@@ -100,7 +99,9 @@
 <style lang="scss" >
 
   .calendar {
-    width: 70%;
+    color: #fff;
+    font-weight: 800;
+    max-width: 100%;
     .el-main {
       height: 459px;
       overflow: hidden;

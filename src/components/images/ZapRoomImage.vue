@@ -1,6 +1,7 @@
 <template>
   <div class="room-image">
-    <img src='https://via.placeholder.com/150' :alt='zapRoom.attributes.name'>
+    <!-- default image src as zapfloor room image is protected -->
+    <img src='https://firebasestorage.googleapis.com/v0/b/zapfloor-5958b.appspot.com/o/meeting_rooms%2Fbogot.jpg?alt=media&token=9ebe65e4-e717-4f1b-bd16-43ee4d5b6bfb' :alt='zapRoom.attributes.name'>
   </div>
 </template>
 

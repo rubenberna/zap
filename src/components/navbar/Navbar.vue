@@ -1,12 +1,10 @@
 <template>
   <div class="navbar">
-    <h1 class="navbar-title">ZapfloorHQ</h1>
-    <el-button v-if='!isLoggedIn'
-               round
-               @click.prevent='login'>
-               Login
-    </el-button>
-    <el-button v-else
+    <div v-if='!isLoggedIn'
+         class="logo">
+      ZapFloorHQ
+    </div>
+    <el-button v-show='isLoggedIn'
                round
                @click.prevent='logout'>
                Logout
@@ -25,10 +23,17 @@
 </script>
 
 <style lang="scss" scoped>
+
   .navbar {
       display: flex;
-      margin-top: 30px;
-      margin-left: 49px;
-      width: 94%;
+      width: 21%;
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 20px;
+
+      .logo {
+        color: #fff;
+        font-size: 20px;
+      }
   }
 </style>

@@ -41,7 +41,8 @@
          selectable: true,
          editable: true,
          minTime: '07:00:00',
-         timezone: 'local'
+         timezone: 'local',
+         weekends: false
        },
        newVisible: false,
        updateVisible: false,
@@ -101,15 +102,3 @@
     }
   }
 </script>
-
-<style lang="scss" >
-
-  .calendar {
-    width: 70%;
-    .el-main {
-      height: 459px;
-      overflow: hidden;
-    }
-  }
-
-</style>

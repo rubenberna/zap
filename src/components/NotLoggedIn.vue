@@ -1,94 +1,129 @@
 <template>
-  <div class="not-logged-in" :style="{backgroundImage: ` url('https://res.cloudinary.com/megslist/image/upload/v1540474420/designer-vietnam-1107428-unsplash.jpg')` }">
-    <!-- delay on speech buble to appear -->
-    <delay :wait='2500'>
-      <transition name='fade' appear>
-        <div class="circular-sb">
-          You're not logged in...
-          <div class="circle1"></div>
-          <div class="circle2"></div>
-        </div>
-      </transition>
-    </delay>
+  <div class="not-logged-in">
+    <button v-show='!loading'
+            class="button"
+            @click='login'>
+        Login
+            <div class="button__horizontal"/>
+            <div class="button__vertical"/>
+    </button>
+    <dot-loader :loading="loading"
+                color='#fff'
+                duration='100000'
+                class="spinner" />
   </div>
 </template>
 
 <script>
+  import { mapActions, mapGetters } from 'vuex'
+  import DotLoader from 'vue-spinner/src/DotLoader.vue'
 
   export default {
-    name: 'not-logged-in'
+    name: 'not-logged-in',
+    computed: mapGetters(['loading']),
+    methods: mapActions(['login']),
+    components: {
+      DotLoader
+    }
   }
 </script>
 
 <style lang="scss" scoped>
   .not-logged-in {
-    color: white;
-    margin-top: 50px;
-    text-align: center;
-    height: 70vh;
-    background-size: cover !important;
-    width: 77%;
-    background-repeat: no-repeat;
-    background-position: center;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  body {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #fcf3ec;
+
+  }
+
+  .button {
+
+    --offset: 10px;
+    --border-size: 2px;
+
+    display: block;
     position: relative;
-    border-radius: 4px;
+    padding: 1.5em 3em;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .25em;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+    transition: background .8s ease;
 
-    .circular-sb {
-      width: 250px;
-      background: #fff;
-      opacity: 0.9;
-      padding: 80px 0px;
-      margin: 30px auto;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 20px;
-      font-weight: lighter;
-      position: absolute;
-      left: 140px;
-      top: 110px;
-      color: #2c3e50;
-    }
-    .circle1 {
-      opacity: 0.9;
-      position: absolute;
-      width: 25px;
-      padding: 20px;
-      border-radius: 50%;
-      right: -15px;
-      bottom: 23px;
+    &:hover {
+      background: rgba(100, 0, 0, .03);
     }
 
-    .circle1:before {
-      content: "";
+    &__horizontal,
+    &__vertical {
       position: absolute;
-      width: 25px;
-      padding: 20px;
-      border-radius: 50%;
-      right: 0px;
-      bottom: 0px;
-      background: #fff;
+      top: var(--horizontal-offset, 0);
+      right: var(--vertical-offset, 0);
+      bottom: var(--horizontal-offset, 0);
+      left: var(--vertical-offset, 0);
+      transition: transform .8s ease;
+      will-change: transform;
+
+      &::before {
+        content: '';
+        position: absolute;
+        border: inherit;
+      }
     }
 
-    .circle2 {
-      position: absolute;
-      background: #fff;
-      opacity: 0.9;
-      width: 5px;
-      padding: 14px 15px;
-      border-radius: 50%;
-      right: -60px;
-      bottom: 5px;
+    &__horizontal {
+      --vertical-offset: calc(var(--offset) * -1);
+      border-top: var(--border-size) solid currentcolor;
+      border-bottom: var(--border-size) solid currentcolor;
+
+      &::before {
+        top: calc(var(--vertical-offset) - var(--border-size));
+        bottom: calc(var(--vertical-offset) - var(--border-size));
+        left: calc(var(--vertical-offset) * -1);
+        right: calc(var(--vertical-offset) * -1);
+      }
+    }
+
+    &:hover &__horizontal {
+      transform: scaleX(0);
+    }
+
+    &__vertical {
+      --horizontal-offset: calc(var(--offset) * -1);
+      border-left: var(--border-size) solid currentcolor;
+      border-right: var(--border-size) solid currentcolor;
+
+      &::before {
+        top: calc(var(--horizontal-offset) * -1);
+        bottom: calc(var(--horizontal-offset) * -1);
+        left: calc(var(--horizontal-offset) - var(--border-size));
+        right: calc(var(--horizontal-offset) - var(--border-size));
+      }
+    }
+
+    &:hover &__vertical {
+      transform: scaleY(0);
     }
   }
 
-  .fade-enter {
-    opacity: 0;
-  }
-  .fade-enter-active {
-    transition: opacity 3s;
+  .spinner {
+    color: #fff;
   }
 
 </style>
