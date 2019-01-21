@@ -25,7 +25,9 @@
               @click='inviteVisible=!inviteVisible'>invite people</span>
       </div>
       <div class="invitation-list">
-        <transition name='bounce'>
+        <transition name="custom-classes-transition"
+                    enter-active-class="animated fadeInDown"
+                    leave-active-class="animated bounceOutRight">
           <invite v-show='inviteVisible'/>
         </transition>
       </div>
@@ -91,26 +93,4 @@
     }
   }
 
-  .bounce-enter-active {
-    animation: bounceIn 2s;
-  }
-
-  .bounce-leave-active {
-    animation: bounceIn 2s reverse;
-  }
-
-  @keyframes bounceIn {
-    0% {
-      transform: scale(0.1);
-      opacity: 0;
-    }
-    60% {
-      transform: scale(1.2);
-      opacity: 1;
-    }
-    100% {
-      transform: 1;
-      opacity: 1;
-    }
-  }
 </style>
