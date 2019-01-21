@@ -21,8 +21,13 @@
         <i class="fas fa-map-marker"></i> {{currReservation.room}}
       </div>
       <div>
-        <p class="invitation">invite people</p>
-        <invite />
+        <span class="invitation"
+              @click='inviteVisible=!inviteVisible'>invite people</span>
+      </div>
+      <div class="invitation-list">
+        <transition name='bounce'>
+          <invite v-show='inviteVisible'/>
+        </transition>
       </div>
     </div>
   </div>
@@ -35,6 +40,11 @@
 
   export default {
     name: 'reservation-details',
+    data() {
+      return {
+        inviteVisible: false,
+      }
+    },
     components: {
       Invite
     },
@@ -52,7 +62,7 @@
 
 <style lang="scss" scoped>
   .reservation-details {
-    height: 300px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -75,5 +85,32 @@
          opacity: 0.7;
        }
      }
+    .invitation-list {
+      margin-top: 15px;
+      height: 200px;
+    }
+  }
+
+  .bounce-enter-active {
+    animation: bounceIn 2s;
+  }
+
+  .bounce-leave-active {
+    animation: bounceIn 2s reverse;
+  }
+
+  @keyframes bounceIn {
+    0% {
+      transform: scale(0.1);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: 1;
+      opacity: 1;
+    }
   }
 </style>
