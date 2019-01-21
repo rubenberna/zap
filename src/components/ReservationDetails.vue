@@ -26,7 +26,7 @@
       </div>
       <div class="invitation-list">
         <transition name="custom-classes-transition"
-                    enter-active-class="animated fadeInDown"
+                    enter-active-class="animated fadeInUp"
                     leave-active-class="animated bounceOutRight">
           <invite v-show='inviteVisible'/>
         </transition>
