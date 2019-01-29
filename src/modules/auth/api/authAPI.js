@@ -3,7 +3,6 @@ import variables from '../../../variables/variables'
 
 export default {
   login() {
-    console.log(variables.root)
     const data = {
       grant_type: 'password',
       client_id: variables.clientID,
