@@ -1,4 +1,4 @@
-import api from '../apis/zapfloorRoomsAPI.js'
+import api from './api/zapfloorRoomsAPI.js'
 
 const state = {
   zapfloorRooms: [],

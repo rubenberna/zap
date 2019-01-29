@@ -1,4 +1,4 @@
-import variables from '../../db/variables/variables'
+import variables from '../../../variables/variables'
 
 export default {
   fetchUsers(token) {

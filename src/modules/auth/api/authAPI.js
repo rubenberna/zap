@@ -1,5 +1,5 @@
-import store from '../store'
-import variables from '../../db/variables/variables'
+import store from '../../../store'
+import variables from '../../../variables/variables'
 
 export default {
   login() {

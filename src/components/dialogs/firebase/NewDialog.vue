@@ -84,18 +84,3 @@
     }
   }
 </script>
-
-<style lang="scss">
-  .calendar-input {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 45%;
-    margin-bottom: 14px;
-    margin-left: 20px;
-  }
-
-  .el-date-editor.el-input, .el-date-editor.el-input__inner, .el-input__inner, .el-input {
-    width: 180px !important;
-  }
-</style>

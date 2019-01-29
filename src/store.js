@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import firebaseRooms from '@/modules/firebaseRooms'
-import zapFloorRooms from '@/modules/zapfloorRooms'
-import auth from '@/modules/auth'
-import reservations from '@/modules/reservations'
-import loading from '@/modules/loading'
-import users from '@/modules/users'
+import firebaseRooms from '@/modules/firebase/firebaseRooms'
+import zapFloorRooms from '@/modules/zapfloorRooms/zapfloorRooms'
+import auth from '@/modules/auth/auth'
+import reservations from '@/modules/reservations/reservations'
+import loading from '@/modules/loading/loading'
+import users from '@/modules/users/users'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
