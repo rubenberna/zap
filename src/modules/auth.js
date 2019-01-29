@@ -1,4 +1,4 @@
-import api from '../apis/zapfloor.js'
+import api from '../apis/authAPI.js'
 
 const state = {
   token: window.localStorage.getItem('zap_token'),

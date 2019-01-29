@@ -1,5 +1,5 @@
-import api from '../apis/firebase.js'
-import zapApi from '../apis/zapfloor.js'
+import api from '../apis/firebaseAPI.js'
+import zapApi from '../apis/reservationsAPI.js'
 
 const state = {
   reservations: [],
