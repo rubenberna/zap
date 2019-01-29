@@ -86,6 +86,6 @@
   }
 
   .el-date-editor.el-input, .el-date-editor.el-input__inner, .el-input__inner, .el-input {
-    width: 180px !important;
+    width: 177px !important;
   }
 </style>

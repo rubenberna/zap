@@ -1,4 +1,4 @@
-import db from '../../db/firebaseInit'
+import db from '../../../../db/firebaseInit'
 
 export default {
   async fetchMeetingRooms() {

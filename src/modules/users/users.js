@@ -1,4 +1,4 @@
-import api from '../apis/usersAPI.js'
+import api from './api/usersAPI.js'
 
 const state = {
   users: [],

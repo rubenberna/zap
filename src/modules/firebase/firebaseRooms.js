@@ -1,4 +1,4 @@
-import api from '../apis/firebaseAPI.js'
+import api from './api/firebaseAPI.js'
 
 const state = {
   meetingRooms: [],
